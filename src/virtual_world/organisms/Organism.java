@@ -3,16 +3,16 @@ package virtual_world.organisms;
 import virtual_world.*;
 
 abstract public class Organism {
-    private int strength, initiative, age;
-    private Coordinates coordinates;
-    private boolean alive;
-    private World world;
-    private Species species;
+    protected int strength, initiative, age;
+    protected Coordinates coordinates;
+    protected boolean alive;
+    protected World world;
+    protected Species species;
 
-    public Organism(int strength, int initiative, int age, Coordinates coordinates, boolean alive, World world, Species species) {
+    public Organism(int strength, int initiative, Coordinates coordinates, boolean alive, World world, Species species) {
         this.strength = strength;
         this.initiative = initiative;
-        this.age = age;
+        this.age = 0;
         this.coordinates = coordinates;
         this.alive = alive;
         this.world = world;
@@ -23,14 +23,13 @@ abstract public class Organism {
 
     abstract public void draw();
 
-    abstract public Organism clone();
+    public abstract Organism clone();
 
     public CollisionResult collision(Organism secondOrganism) {
         return this.collision(secondOrganism, false);
     }
 
     public CollisionResult collision(Organism secondOrganism, boolean isAttacked) {
-
         if(this.isStrongerThan(secondOrganism)) {
             if (!isAttacked && secondOrganism.collision(this, true) == CollisionResult.TIE) {
                 return CollisionResult.TIE;
@@ -45,7 +44,11 @@ abstract public class Organism {
         }
     }
 
-    public Coordinates findClosestFreeSpace(int distance) {
+    protected Coordinates findClosestFreeSpace() {
+        return this.findClosestFreeSpace(1);
+    }
+
+    protected Coordinates findClosestFreeSpace(int distance) {
         Coordinates coordinates = this.getCoordinates();
         Coordinates newCoordinates = new Coordinates(coordinates.getX(), coordinates.getY());
         if(distance == 1)

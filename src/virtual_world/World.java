@@ -18,6 +18,7 @@ public class World {
     public void print() {}
     public void nextTurn() {}
     public void addOrganism(Organism organism) {
+        organism.setWorld(this);
         Coordinates coordinates = organism.getCoordinates();
         this.organisms[coordinates.getX()][coordinates.getY()] = organism;
     }

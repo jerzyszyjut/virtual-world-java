@@ -8,6 +8,7 @@ abstract public class Animal extends Organism {
         super(strength, initiative, new Coordinates(0, 0), true, null, species);
     }
 
+    @Override
     public void action(Direction direction)
     {
         if(direction == Direction.NONE)

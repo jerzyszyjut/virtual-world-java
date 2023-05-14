@@ -3,10 +3,10 @@ package virtual_world.organisms.animals;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
-public class Wolf extends Animal {
-    public Wolf() { super(9, 5, Species.WOLF); }
+public class Sheep extends Animal {
+    public Sheep() { super(4, 4,  Species.SHEEP); }
     @Override
     public void draw() {}
     @Override
-    public Organism clone() { return new Wolf(); }
+    public Organism clone() { return new Sheep(); }
 }

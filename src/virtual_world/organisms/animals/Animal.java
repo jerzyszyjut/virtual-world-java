@@ -19,7 +19,7 @@ abstract public class Animal extends Organism {
             direction = Direction.randomDirection();
         }
 
-        Coordinates newPosition = coordinates;
+        Coordinates newPosition = new Coordinates(this.getCoordinates().getX(), this.getCoordinates().getY());
 
         switch (direction) {
             case UP -> newPosition.setY(newPosition.getY() - 1);

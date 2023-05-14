@@ -1,23 +1,17 @@
-package xyz.kwasniak.Simulator;
+package virtual_world;
 
-import xyz.kwasniak.Renderer.Renderer;
-import xyz.kwasniak.World.World;
-import xyz.kwasniak.Config;
+import virtual_world.renderer.Renderer;
 
 public class Simulator {
     private Renderer renderer;
     private World world;
     public void init() {
 
-        this.world = new World();
+        this.world = new World(10, 10);
         this.renderer = new Renderer();
-        world.init(Config.WORLD_N, Config.WORLD_M);
-
 
         connectRendererToWorld();
         renderer.init();
-
-
     }
 
     private void connectRendererToWorld() {

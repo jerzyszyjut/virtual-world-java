@@ -4,30 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88c9a22e-0533-44f0-acf2-b1357c3b8295" name="Changes" comment="Add file saving/loading">
-      <change afterPath="$PROJECT_DIR$/src/virtual_world/Simulator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Panel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Square.java" afterDir="false" />
+    <list default="true" id="88c9a22e-0533-44f0-acf2-b1357c3b8295" name="Changes" comment="WIP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/Species.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/Species.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/Simulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/Organism.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Antelope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Antelope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Fox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Fox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Sheep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Sheep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Turtle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Wolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Belladonna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Belladonna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Dandelion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Dandelion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Grass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Guarana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Guarana.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/plants/HeracleumSosnowskyi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/plants/HeracleumSosnowskyi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/plants/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/Panel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/Square.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +79,7 @@
       <workItem from="1683991543823" duration="7347000" />
       <workItem from="1684053103122" duration="7765000" />
       <workItem from="1684070812992" duration="7989000" />
-      <workItem from="1684086626419" duration="4580000" />
+      <workItem from="1684086626419" duration="7672000" />
     </task>
     <task id="LOCAL-00001" summary="Create world and organism">
       <created>1683990232825</created>
@@ -151,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684075420987</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="WIP">
+      <created>1684091491297</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684091491297</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,21 +158,40 @@
     <MESSAGE value="Add plants to belladonna" />
     <MESSAGE value="Add HeracleumSosnowskyi" />
     <MESSAGE value="Add file saving/loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add file saving/loading" />
+    <MESSAGE value="WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/virtual_world/World.java</url>
-          <line>183</line>
+          <line>185</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="x &lt; 0 || y &lt; 0" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/virtual_world/Coordinates.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="y &lt; 0" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/virtual_world/Coordinates.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="x &lt; 0" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/virtual_world/Coordinates.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="organism" language="JAVA" />
+        <watch expression="world.getOrganismsList()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

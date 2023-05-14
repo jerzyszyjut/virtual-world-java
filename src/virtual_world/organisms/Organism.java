@@ -1,7 +1,6 @@
 package virtual_world.organisms;
 
 import virtual_world.*;
-import virtual_world.renderer.Square;
 
 import java.awt.*;
 
@@ -30,15 +29,12 @@ abstract public class Organism {
 
     abstract public void action(Direction direction);
 
-    public Square draw() {
-        return new Square(this.coordinates * Config.FIELD_SIZE, tj this.color);
-    }
-
     public abstract Organism clone();
 
     public Organism clone(Coordinates coordinates) {
         Organism newOrganism = this.clone();
         newOrganism.setCoordinates(coordinates);
+        world.addLog("New " + newOrganism.getSpecies() + " was born at " + coordinates.toString());
         return newOrganism;
     }
 
@@ -66,27 +62,29 @@ abstract public class Organism {
 
     protected Coordinates findClosestFreeSpace(int distance) {
         Coordinates coordinates = this.getCoordinates();
-        Coordinates newCoordinates = new Coordinates(coordinates.getX(), coordinates.getY());
+
         if (distance == 1) {
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     if ((i * j) != 0) {
                         continue;
                     }
-                    newCoordinates.setX(coordinates.getX() + i);
-                    newCoordinates.setY(coordinates.getY() + j);
-                    if (world.isInWorld(newCoordinates) && world.getOrganism(newCoordinates) == null) {
-                        return newCoordinates;
+                    if(world.isInWorld(coordinates.getX() + i, coordinates.getY() + j))
+                    {
+                        if (world.getOrganism(coordinates.getX() + i, coordinates.getY() + j) == null) {
+                            return new Coordinates(coordinates.getX() + i, coordinates.getY() + j);
+                        }
                     }
                 }
             }
         } else {
             for (int i = -distance; i <= distance; i++) {
                 for (int j = -distance; j <= distance; j++) {
-                    newCoordinates.setX(coordinates.getX() + i);
-                    newCoordinates.setY(coordinates.getY() + j);
-                    if (world.isInWorld(newCoordinates) && world.getOrganism(newCoordinates) == null) {
-                        return newCoordinates;
+                    if(world.isInWorld(coordinates.getX() + i, coordinates.getY() + j))
+                    {
+                        if (world.getOrganism(coordinates.getX() + i, coordinates.getY() + j) == null) {
+                            return new Coordinates(coordinates.getX() + i, coordinates.getY() + j);
+                        }
                     }
                 }
             }

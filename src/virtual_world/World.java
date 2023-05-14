@@ -18,6 +18,7 @@ public class World {
     private int width;
     private int height;
     private Organism player;
+    private final ArrayList<String> logs = new ArrayList<>();
 
     public World(int width, int height) {
         this.turn = 0;
@@ -29,16 +30,6 @@ public class World {
         addOrganism(new Wolf(new Coordinates(1, 1)));
         addOrganism(new Wolf(new Coordinates(2, 2)));
         addOrganism(new Sheep(new Coordinates(3, 3)));
-    }
-
-    public void print() {
-        for(Organism[] row : this.organisms) {
-            for(Organism organism : row) {
-                if(organism != null) {
-                    organism.draw();
-                }
-            }
-        }
     }
 
     public ArrayList<Organism> getOrganismsList() {
@@ -76,10 +67,17 @@ public class World {
         this.organisms[coordinates.getX()][coordinates.getY()] = null;
     }
 
+
     public Organism getOrganism(Coordinates coordinates) {
         if (!this.isInWorld(coordinates))
             return null;
         return this.organisms[coordinates.getX()][coordinates.getY()];
+    }
+
+    public Organism getOrganism(int x, int y) {
+        if (!this.isInWorld(x, y))
+            return null;
+        return this.organisms[x][y];
     }
 
     public void removeDeadOrganisms() {
@@ -94,6 +92,10 @@ public class World {
 
     public boolean isInWorld(Coordinates coordinates) {
         return coordinates.getX() >= 0 && coordinates.getX() < this.width && coordinates.getY() >= 0 && coordinates.getY() < this.height;
+    }
+
+    public boolean isInWorld(int x, int y) {
+        return x >= 0 && x < this.width && y >= 0 && y < this.height;
     }
 
     public void moveOrganism(Organism organism, Coordinates coordinates) {
@@ -209,5 +211,17 @@ public class World {
 
     public void setPlayer(Organism player) {
         this.player = player;
+    }
+
+    public void addLog(String log) {
+        this.logs.add(log);
+    }
+
+    public ArrayList<String> getLogs() {
+        return this.logs;
+    }
+
+    public void clearLogs() {
+        this.logs.clear();
     }
 }

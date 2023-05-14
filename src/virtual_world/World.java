@@ -29,6 +29,8 @@ public class World {
     }
 
     public Organism getOrganism(Coordinates coordinates) {
+        if(!this.isInWorld(coordinates))
+            return null;
         return this.organisms[coordinates.getX()][coordinates.getY()];
     }
 

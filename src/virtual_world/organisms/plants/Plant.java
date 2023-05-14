@@ -1,9 +1,6 @@
 package virtual_world.organisms.plants;
 
-import virtual_world.Config;
-import virtual_world.Coordinates;
-import virtual_world.Direction;
-import virtual_world.Species;
+import virtual_world.*;
 import virtual_world.organisms.Organism;
 
 abstract public class Plant extends Organism {
@@ -21,5 +18,10 @@ abstract public class Plant extends Organism {
                 world.addOrganism(this.clone(newCoordinates));
             }
         }
+    }
+
+    @Override
+    public CollisionResult collision(Organism secondOrganism, boolean isAttacked) {
+        return CollisionResult.DEFEAT;
     }
 }

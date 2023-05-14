@@ -19,14 +19,17 @@ abstract public class Organism {
         this.species = species;
     }
 
+    public void action() {
+        this.action(Direction.NONE);
+    }
+
     abstract public void action(Direction direction);
 
     abstract public void draw();
 
     public abstract Organism clone();
 
-    public Organism clone(Coordinates coordinates)
-    {
+    public Organism clone(Coordinates coordinates) {
         Organism newOrganism = this.clone();
         newOrganism.setCoordinates(coordinates);
         return newOrganism;
@@ -37,19 +40,15 @@ abstract public class Organism {
     }
 
     public CollisionResult collision(Organism secondOrganism, boolean isAttacked) {
-        if(!isAttacked) {
-                CollisionResult collisionResult = secondOrganism.collision(this, true);
-                if(isStrongerThan(secondOrganism) && collisionResult == CollisionResult.TIE)
-                {
-                    return CollisionResult.TIE;
-                }
+        if (!isAttacked) {
+            CollisionResult collisionResult = secondOrganism.collision(this, true);
+            if (isStrongerThan(secondOrganism) && collisionResult == CollisionResult.TIE) {
+                return CollisionResult.TIE;
+            }
         }
-        if(this.isStrongerThan(secondOrganism, isAttacked))
-        {
+        if (this.isStrongerThan(secondOrganism, isAttacked)) {
             return CollisionResult.VICTORY;
-        }
-        else
-        {
+        } else {
             return CollisionResult.DEFEAT;
         }
     }
@@ -61,35 +60,25 @@ abstract public class Organism {
     protected Coordinates findClosestFreeSpace(int distance) {
         Coordinates coordinates = this.getCoordinates();
         Coordinates newCoordinates = new Coordinates(coordinates.getX(), coordinates.getY());
-        if(distance == 1)
-        {
-            for(int i=-1; i<=1; i++)
-            {
-                for(int j=-1; j<=1; j++)
-                {
-                    if((i * j) != 0)
-                    {
+        if (distance == 1) {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    if ((i * j) != 0) {
                         continue;
                     }
                     newCoordinates.setX(coordinates.getX() + i);
                     newCoordinates.setY(coordinates.getY() + j);
-                    if(world.isInWorld(newCoordinates) && world.getOrganism(newCoordinates) == null)
-                    {
+                    if (world.isInWorld(newCoordinates) && world.getOrganism(newCoordinates) == null) {
                         return newCoordinates;
                     }
                 }
             }
-        }
-        else
-        {
-            for(int i=-distance; i<=distance; i++)
-            {
-                for(int j=-distance; j<=distance; j++)
-                {
+        } else {
+            for (int i = -distance; i <= distance; i++) {
+                for (int j = -distance; j <= distance; j++) {
                     newCoordinates.setX(coordinates.getX() + i);
                     newCoordinates.setY(coordinates.getY() + j);
-                    if(world.isInWorld(newCoordinates) && world.getOrganism(newCoordinates) == null)
-                    {
+                    if (world.isInWorld(newCoordinates) && world.getOrganism(newCoordinates) == null) {
                         return newCoordinates;
                     }
                 }
@@ -99,12 +88,9 @@ abstract public class Organism {
     }
 
     public boolean isStrongerThan(Organism secondOrganism, boolean isAttacked) {
-        if(isAttacked)
-        {
+        if (isAttacked) {
             return isStrongerThan(secondOrganism);
-        }
-        else
-        {
+        } else {
             return strength >= secondOrganism.getStrength();
         }
     }
@@ -114,11 +100,31 @@ abstract public class Organism {
     }
 
     public boolean hasHigherInitiativeThan(Organism secondOrganism) {
-        if(initiative == secondOrganism.getInitiative())
-        {
+        if (initiative == secondOrganism.getInitiative()) {
             return age > secondOrganism.getAge();
         }
         return initiative > secondOrganism.getInitiative();
+    }
+
+    public String toString() {
+        return species +
+                "\t" +
+                strength +
+                "\t" +
+                initiative +
+                "\t" +
+                age +
+                "\t" +
+                coordinates;
+    }
+
+    public Organism fromString(String organismString) {
+        String[] organismStringParts = organismString.split("\t");
+        this.strength = Integer.parseInt(organismStringParts[1]);
+        this.initiative = Integer.parseInt(organismStringParts[2]);
+        this.age = Integer.parseInt(organismStringParts[3]);
+        this.coordinates = Coordinates.fromString(organismStringParts[4]);
+        return this;
     }
 
     public void die() {
@@ -139,6 +145,10 @@ abstract public class Organism {
 
     public void setInitiative(int initiative) {
         this.initiative = initiative;
+    }
+
+    public int incrementAge() {
+        return ++age;
     }
 
     public int getAge() {
@@ -176,6 +186,5 @@ abstract public class Organism {
     public void setSpecies(Species species) {
         this.species = species;
     }
-
-
 }
+

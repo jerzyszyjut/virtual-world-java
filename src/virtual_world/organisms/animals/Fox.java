@@ -8,12 +8,23 @@ import virtual_world.organisms.Organism;
 
 import java.util.ArrayList;
 
-public class Fox extends Animal{
-    public Fox() { super(Config.FOX_STRENGTH, Config.FOX_INITIATIVE, Species.FOX); }
+public class Fox extends Animal {
+    public Fox() {
+        super(Config.FOX_STRENGTH, Config.FOX_INITIATIVE, new Coordinates(0, 0), Species.FOX);
+    }
+
+    public Fox(Coordinates coordinates) {
+        super(Config.FOX_STRENGTH, Config.FOX_INITIATIVE, coordinates, Species.FOX);
+    }
+
     @Override
-    public void draw() {}
+    public void draw() {
+    }
+
     @Override
-    public Organism clone() { return new Fox(); }
+    public Organism clone() {
+        return new Fox();
+    }
 
     @Override
     public void action(Direction direction) {
@@ -21,30 +32,25 @@ public class Fox extends Animal{
 
         ArrayList<Direction> possibleMoves = new ArrayList<Direction>();
 
-        for(int i=-1; i<=1; i++)
-        {
-            for(int j=-1; j<=1; j++)
-            {
-                if(i * j != 0)
-                {
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (i * j != 0) {
                     continue;
                 }
                 Organism adjecentOrganism = world.getOrganism(
                         new Coordinates(coordinates.getX() + i, coordinates.getY() + j)
                 );
-                if(
+                if (
                         adjecentOrganism == null
                                 || (adjecentOrganism.getSpecies() != this.getSpecies()
-                                && this.isStrongerThan(adjecentOrganism)))
-                {
+                                && this.isStrongerThan(adjecentOrganism))) {
                     possibleMoves.add(Direction.fromOffset(i, j));
                 }
             }
         }
 
-        if(possibleMoves.size() > 0)
-        {
-            direction = possibleMoves.get((int)(Math.random() * possibleMoves.size()));
+        if (possibleMoves.size() > 0) {
+            direction = possibleMoves.get((int) (Math.random() * possibleMoves.size()));
         }
 
         super.action(direction);

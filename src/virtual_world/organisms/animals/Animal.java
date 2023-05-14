@@ -50,6 +50,10 @@ abstract public class Animal extends Organism {
                     {
                         this.die();
                     }
+                    else if(collisionResult == CollisionResult.ESCAPED)
+                    {
+                        world.moveOrganism(this, newPosition);
+                    }
                 }
             }
         }

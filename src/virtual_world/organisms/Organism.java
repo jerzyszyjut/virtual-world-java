@@ -30,16 +30,19 @@ abstract public class Organism {
     }
 
     public CollisionResult collision(Organism secondOrganism, boolean isAttacked) {
-        if(this.isStrongerThan(secondOrganism)) {
-            if (!isAttacked && secondOrganism.collision(this, true) == CollisionResult.TIE) {
-                return CollisionResult.TIE;
-            }
-            else
-            {
-                return CollisionResult.VICTORY;
-            }
+        if(!isAttacked) {
+                CollisionResult collisionResult = secondOrganism.collision(this, true);
+                if(isStrongerThan(secondOrganism) && collisionResult == CollisionResult.TIE)
+                {
+                    return CollisionResult.TIE;
+                }
         }
-        else {
+        if(this.isStrongerThan(secondOrganism, isAttacked))
+        {
+            return CollisionResult.VICTORY;
+        }
+        else
+        {
             return CollisionResult.DEFEAT;
         }
     }
@@ -88,18 +91,26 @@ abstract public class Organism {
         return null;
     }
 
-    public boolean isStrongerThan(Organism secondOrganism) {
-        if(strength == secondOrganism.getStrength())
+    public boolean isStrongerThan(Organism secondOrganism, boolean isAttacked) {
+        if(isAttacked)
         {
-            return age > secondOrganism.getAge();
+            return isStrongerThan(secondOrganism);
         }
         else
         {
-            return strength > secondOrganism.getStrength();
+            return strength >= secondOrganism.getStrength();
         }
     }
 
+    public boolean isStrongerThan(Organism secondOrganism) {
+        return strength > secondOrganism.getStrength();
+    }
+
     public boolean hasHigherInitiativeThan(Organism secondOrganism) {
+        if(initiative == secondOrganism.getInitiative())
+        {
+            return age > secondOrganism.getAge();
+        }
         return initiative > secondOrganism.getInitiative();
     }
 

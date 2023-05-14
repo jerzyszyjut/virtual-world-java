@@ -1,5 +1,6 @@
 package virtual_world.organisms.animals;
 
+import virtual_world.Config;
 import virtual_world.Coordinates;
 import virtual_world.Direction;
 import virtual_world.Species;
@@ -8,7 +9,7 @@ import virtual_world.organisms.Organism;
 import java.util.ArrayList;
 
 public class Fox extends Animal{
-    public Fox() { super(3, 7, Species.FOX); }
+    public Fox() { super(Config.FOX_STRENGTH, Config.FOX_INITIATIVE, Species.FOX); }
     @Override
     public void draw() {}
     @Override

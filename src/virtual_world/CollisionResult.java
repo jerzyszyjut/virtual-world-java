@@ -4,4 +4,5 @@ public enum CollisionResult {
     VICTORY,
     DEFEAT,
     TIE,
+    ESCAPED,
 }

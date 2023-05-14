@@ -118,19 +118,22 @@ class MyPanel extends JPanel implements ActionListener {
                 world.nextTurn();
 
                 Organism player = world.getPlayer();
-                switch (e.getKeyCode()) {
-                    case KeyEvent.VK_UP:
-                        player.action(Direction.UP);
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        player.action(Direction.DOWN);
-                        break;
-                    case KeyEvent.VK_LEFT:
-                        player.action(Direction.LEFT);
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                        player.action(Direction.RIGHT);
-                        break;
+                if(player != null)
+                {
+                    switch (e.getKeyCode()) {
+                        case KeyEvent.VK_UP:
+                            player.action(Direction.UP);
+                            break;
+                        case KeyEvent.VK_DOWN:
+                            player.action(Direction.DOWN);
+                            break;
+                        case KeyEvent.VK_LEFT:
+                            player.action(Direction.LEFT);
+                            break;
+                        case KeyEvent.VK_RIGHT:
+                            player.action(Direction.RIGHT);
+                            break;
+                    }
                 }
 
                 performRedraw();

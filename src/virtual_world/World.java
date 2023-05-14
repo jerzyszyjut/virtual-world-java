@@ -27,8 +27,7 @@ public class World {
         this.organisms = new Organism[width][height];
         this.player = new Human();
         addOrganism(this.player);
-        addOrganism(new Wolf(new Coordinates(1, 1)));
-        addOrganism(new Wolf(new Coordinates(2, 2)));
+        addOrganism(new Wolf(new Coordinates(5, 5)));
         addOrganism(new Sheep(new Coordinates(3, 3)));
     }
 
@@ -36,7 +35,7 @@ public class World {
         ArrayList<Organism> organisms = new ArrayList<>();
         for (int i = 0; i < this.width; i++) {
             for (int j = 0; j < this.height; j++) {
-                if (this.organisms[i][j] != null && this.organisms[i][j].isAlive() && this.organisms[i][j].getSpecies() != Species.HUMAN) {
+                if (this.organisms[i][j] != null && this.organisms[i][j].isAlive()) {
                     organisms.add(this.organisms[i][j]);
                 }
             }
@@ -50,8 +49,14 @@ public class World {
         organisms.sort(new OrganismComparator());
 
         for (Organism organism : organisms) {
-            organism.incrementAge();
-            organism.action();
+            if(organism.isAlive())
+            {
+                if(organism.getSpecies() != Species.HUMAN)
+                {
+                    organism.action();
+                }
+                organism.incrementAge();
+            }
         }
         removeDeadOrganisms();
     }
@@ -64,14 +69,16 @@ public class World {
 
     public void removeOrganism(Organism organism) {
         Coordinates coordinates = organism.getCoordinates();
+        if(organism.getSpecies() == Species.HUMAN)
+        {
+            this.player = null;
+        }
         this.organisms[coordinates.getX()][coordinates.getY()] = null;
     }
 
 
     public Organism getOrganism(Coordinates coordinates) {
-        if (!this.isInWorld(coordinates))
-            return null;
-        return this.organisms[coordinates.getX()][coordinates.getY()];
+        return this.getOrganism(coordinates.getX(), coordinates.getY());
     }
 
     public Organism getOrganism(int x, int y) {
@@ -121,7 +128,10 @@ public class World {
 
             ArrayList<Organism> organisms = getOrganismsList();
             for (Organism organism : organisms) {
-                fileWriter.write(organism.toString() + "\n");
+                if(organism.getSpecies() != Species.HUMAN)
+                {
+                    fileWriter.write(organism.toString() + "\n");
+                }
             }
             fileWriter.close();
         } catch (IOException e) {
@@ -129,8 +139,20 @@ public class World {
         }
     }
 
+    private void clearOrganisms()
+    {
+        for(int i = 0; i < this.width; i++)
+        {
+            for(int j = 0; j < this.height; j++)
+            {
+                this.organisms[i][j] = null;
+            }
+        }
+    }
+
     public void loadWorldStateFromFile(String filename) {
         try {
+            clearOrganisms();
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
             this.turn = Integer.parseInt(bufferedReader.readLine());
             this.width = Integer.parseInt(bufferedReader.readLine());
@@ -141,6 +163,7 @@ public class World {
             } else {
                 this.player = new Human();
                 this.player.fromString(playerString);
+                addOrganism(this.player);
             }
             String line;
             while ((line = bufferedReader.readLine()) != null) {

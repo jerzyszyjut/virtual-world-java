@@ -3,9 +3,11 @@ package virtual_world.organisms.plants;
 import virtual_world.*;
 import virtual_world.organisms.Organism;
 
+import java.awt.*;
+
 abstract public class Plant extends Organism {
-    public Plant(int strength, Coordinates coordinates, Species species) {
-        super(strength, Config.PLANT_INITIATIVE, coordinates, true, null, species);
+    public Plant(int strength, Coordinates coordinates, Species species, Color color) {
+        super(strength, Config.PLANT_INITIATIVE, coordinates, true, null, species, color);
     }
 
     @Override

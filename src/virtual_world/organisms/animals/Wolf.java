@@ -5,20 +5,17 @@ import virtual_world.Coordinates;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
+import java.awt.*;
+
 public class Wolf extends Animal {
     public Wolf() {
-        super(Config.WOLF_STRENGTH, Config.WOLF_INITIATIVE, new Coordinates(0, 0), Species.WOLF);
+        super(Config.WOLF_STRENGTH, Config.WOLF_INITIATIVE, new Coordinates(0, 0), Species.WOLF, Config.WOLF_COLOR);
     }
 
     public Wolf(Coordinates coordinates) {
-        super(Config.WOLF_STRENGTH, Config.WOLF_INITIATIVE, coordinates, Species.WOLF);
+        super(Config.WOLF_STRENGTH, Config.WOLF_INITIATIVE, coordinates, Species.WOLF, Config.WOLF_COLOR);
     }
 
-    @Override
-    public void draw() {
-    }
-
-    @Override
     public Organism clone() {
         return new Wolf();
     }

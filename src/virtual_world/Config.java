@@ -1,6 +1,9 @@
 package virtual_world;
 
+import java.awt.*;
+
 public class Config {
+    public static final int FIELD_SIZE = 20;
     public static int HUMAN_STRENGTH = 5;
     public static int HUMAN_INITIATIVE = 4;
     public static int WOLF_STRENGTH = 9;
@@ -26,4 +29,16 @@ public class Config {
     public static int DANDELION_SPREAD_TRIES = 3;
     public static int PLANT_SPREAD_CHANCE_PERCENT = 10;
     public static int GUARANA_STRENGTH_BOOST = 3;
+    public static Color WOLF_COLOR = Color.GRAY;
+    public static Color SHEEP_COLOR = Color.WHITE;
+    public static Color FOX_COLOR = Color.RED;
+    public static Color TURTLE_COLOR = Color.GREEN;
+    public static Color ANTELOPE_COLOR = Color.ORANGE;
+    public static Color GRASS_COLOR = Color.GREEN;
+    public static Color DANDELION_COLOR = Color.YELLOW;
+    public static Color GUARANA_COLOR = Color.PINK;
+    public static Color BELLADONNA_COLOR = Color.BLACK;
+    public static Color HERACLEUM_SOSNOWSKYI_COLOR = Color.MAGENTA;
+    public static Color HUMAN_COLOR = Color.BLUE;
+
 }

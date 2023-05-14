@@ -6,9 +6,11 @@ import virtual_world.Direction;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
+import java.awt.*;
+
 abstract public class Animal extends Organism {
-    public Animal(int strength, int initiative, Coordinates coordinates, Species species) {
-        super(strength, initiative, coordinates, true, null, species);
+    public Animal(int strength, int initiative, Coordinates coordinates, Species species, Color color) {
+        super(strength, initiative, coordinates, true, null, species, color);
     }
 
     @Override

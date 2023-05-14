@@ -4,17 +4,15 @@ import virtual_world.*;
 import virtual_world.organisms.Organism;
 import virtual_world.organisms.animals.Animal;
 
+import java.awt.*;
+
 public class HeracleumSosnowskyi extends Plant {
     public HeracleumSosnowskyi() {
-        super(Config.HERACLEUM_SOSNOWSKYI_STRENGTH, new Coordinates(0, 0), Species.HERACLEUM_SOSNOWSKYI);
+        super(Config.HERACLEUM_SOSNOWSKYI_STRENGTH, new Coordinates(0, 0), Species.HERACLEUM_SOSNOWSKYI, Config.HERACLEUM_SOSNOWSKYI_COLOR);
     }
 
     public HeracleumSosnowskyi(Coordinates coordinates) {
-        super(Config.HERACLEUM_SOSNOWSKYI_STRENGTH, coordinates, Species.HERACLEUM_SOSNOWSKYI);
-    }
-
-    @Override
-    public void draw() {
+        super(Config.HERACLEUM_SOSNOWSKYI_STRENGTH, coordinates, Species.HERACLEUM_SOSNOWSKYI, Config.HERACLEUM_SOSNOWSKYI_COLOR);
     }
 
     @Override

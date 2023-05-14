@@ -6,19 +6,16 @@ import virtual_world.Direction;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Fox extends Animal {
     public Fox() {
-        super(Config.FOX_STRENGTH, Config.FOX_INITIATIVE, new Coordinates(0, 0), Species.FOX);
+        super(Config.FOX_STRENGTH, Config.FOX_INITIATIVE, new Coordinates(0, 0), Species.FOX, Config.FOX_COLOR);
     }
 
     public Fox(Coordinates coordinates) {
-        super(Config.FOX_STRENGTH, Config.FOX_INITIATIVE, coordinates, Species.FOX);
-    }
-
-    @Override
-    public void draw() {
+        super(Config.FOX_STRENGTH, Config.FOX_INITIATIVE, coordinates, Species.FOX, Config.FOX_COLOR);
     }
 
     @Override

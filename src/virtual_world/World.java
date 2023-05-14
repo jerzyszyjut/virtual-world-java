@@ -5,6 +5,7 @@ import virtual_world.organisms.OrganismComparator;
 import virtual_world.organisms.animals.*;
 import virtual_world.organisms.plants.*;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -31,6 +32,13 @@ public class World {
     }
 
     public void print() {
+        for(Organism[] row : this.organisms) {
+            for(Organism organism : row) {
+                if(organism != null) {
+                    organism.draw();
+                }
+            }
+        }
     }
 
     public ArrayList<Organism> getOrganismsList() {
@@ -89,6 +97,8 @@ public class World {
     }
 
     public void moveOrganism(Organism organism, Coordinates coordinates) {
+        if(!this.isInWorld(coordinates))
+            return;
         Coordinates oldCoordinates = organism.getCoordinates();
         this.organisms[oldCoordinates.getX()][oldCoordinates.getY()] = null;
         this.organisms[coordinates.getX()][coordinates.getY()] = organism;

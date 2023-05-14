@@ -1,6 +1,9 @@
 package virtual_world.organisms;
 
 import virtual_world.*;
+import virtual_world.renderer.Square;
+
+import java.awt.*;
 
 abstract public class Organism {
     protected int strength, initiative, age;
@@ -8,8 +11,9 @@ abstract public class Organism {
     protected boolean alive;
     protected World world;
     protected Species species;
+    protected Color color;
 
-    public Organism(int strength, int initiative, Coordinates coordinates, boolean alive, World world, Species species) {
+    public Organism(int strength, int initiative, Coordinates coordinates, boolean alive, World world, Species species, Color color) {
         this.strength = strength;
         this.initiative = initiative;
         this.age = 0;
@@ -17,6 +21,7 @@ abstract public class Organism {
         this.alive = alive;
         this.world = world;
         this.species = species;
+        this.color = color;
     }
 
     public void action() {
@@ -25,7 +30,9 @@ abstract public class Organism {
 
     abstract public void action(Direction direction);
 
-    abstract public void draw();
+    public Square draw() {
+        return new Square(this.coordinates * Config.FIELD_SIZE, tj this.color);
+    }
 
     public abstract Organism clone();
 
@@ -185,6 +192,14 @@ abstract public class Organism {
 
     public void setSpecies(Species species) {
         this.species = species;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
 

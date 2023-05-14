@@ -25,6 +25,13 @@ abstract public class Organism {
 
     public abstract Organism clone();
 
+    public Organism clone(Coordinates coordinates)
+    {
+        Organism newOrganism = this.clone();
+        newOrganism.setCoordinates(coordinates);
+        return newOrganism;
+    }
+
     public CollisionResult collision(Organism secondOrganism) {
         return this.collision(secondOrganism, false);
     }

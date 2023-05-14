@@ -6,7 +6,6 @@ public enum Species {
     FOX,
     TURTLE,
     ANTELOPE,
-    CYBER_SHEEP,
     GRASS,
     DANDELION,
     GUARANA,

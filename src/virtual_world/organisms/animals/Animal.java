@@ -64,9 +64,7 @@ abstract public class Animal extends Organism {
         Coordinates newCoordinates = findClosestFreeSpace();
         if(newCoordinates != null)
         {
-            Organism newOrganism = otherOrganism.clone();
-            newOrganism.setCoordinates(newCoordinates);
-            world.addOrganism(newOrganism);
+            world.addOrganism(otherOrganism.clone(newCoordinates));
         }
     }
 }

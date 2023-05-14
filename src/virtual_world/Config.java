@@ -24,5 +24,6 @@ public class Config {
     public static int ANTELOPE_MOVE_RANGE = 2;
     public static int ANTELOPE_ESCAPE_CHANCE_PERCENT = 50;
     public static int DANDELION_SPREAD_TRIES = 3;
-
+    public static int PLANT_SPREAD_CHANCE_PERCENT = 10;
+    public static int GUARANA_STRENGTH_BOOST = 3;
 }

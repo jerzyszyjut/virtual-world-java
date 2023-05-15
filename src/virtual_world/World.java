@@ -113,9 +113,16 @@ public class World {
             return;
         Coordinates oldCoordinates = organism.getCoordinates();
         Organism previousOrganism = this.organisms[coordinates.getX()][coordinates.getY()];
-        if(previousOrganism != null && previousOrganism.getSpecies() == Species.HUMAN)
+        if(previousOrganism != null)
         {
-            this.player = null;
+            if(previousOrganism.isAlive())
+            {
+                return;
+            }
+            if(previousOrganism.getSpecies() == Species.HUMAN)
+            {
+                this.player = null;
+            }
         }
         this.organisms[oldCoordinates.getX()][oldCoordinates.getY()] = null;
         this.organisms[coordinates.getX()][coordinates.getY()] = organism;

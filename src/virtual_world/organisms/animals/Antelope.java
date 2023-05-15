@@ -32,6 +32,7 @@ public class Antelope extends Animal {
         }
         if (Math.random() * 100 < Config.ANTELOPE_ESCAPE_CHANCE_PERCENT) {
             world.moveOrganism(this, escapeCoordinates);
+            this.world.addLog("Antelope escaped from " + secondOrganism.getSpecies() + " at " + coordinates);
             return CollisionResult.ESCAPED;
         }
         return super.collision(secondOrganism, isAttacked);

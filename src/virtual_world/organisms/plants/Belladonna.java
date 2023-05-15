@@ -22,6 +22,8 @@ public class Belladonna extends Plant {
     @Override
     public CollisionResult collision(Organism secondOrganism, boolean isAttacked) {
         secondOrganism.die();
+        this.die();
+        this.world.addLog(this.species + " killed " + secondOrganism.getSpecies() + " at " + this.coordinates.toString() + "!");
         return super.collision(secondOrganism, isAttacked);
     }
 }

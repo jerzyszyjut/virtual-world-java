@@ -25,6 +25,7 @@ public class HeracleumSosnowskyi extends Plant {
                 if ((i * j) == 0) {
                     Organism organism = world.getOrganism(new Coordinates(this.getCoordinates().getX() + i, this.getCoordinates().getY() + j));
                     if (organism instanceof Animal) {
+                        this.world.addLog(this.getSpecies().toString() + " killed " + organism.getSpecies().toString() + " at " + organism.getCoordinates().toString() + "!");
                         organism.die();
                     }
                 }

@@ -78,4 +78,31 @@ public class Human extends Animal {
             specialAbilityCooldown = Config.HUMAN_SPECIAL_ABILITY_COOLDOWN;
         }
     }
+
+    public String toString() {
+        return species +
+                "\t" +
+                strength +
+                "\t" +
+                initiative +
+                "\t" +
+                age +
+                "\t" +
+                coordinates +
+                "\t" +
+                specialAbilityUsed +
+                "\t" +
+                specialAbilityCooldown;
+    }
+
+    public Organism fromString(String organismString) {
+        String[] organismStringParts = organismString.split("\t");
+        this.strength = Integer.parseInt(organismStringParts[1]);
+        this.initiative = Integer.parseInt(organismStringParts[2]);
+        this.age = Integer.parseInt(organismStringParts[3]);
+        this.coordinates = Coordinates.fromString(organismStringParts[4]);
+        this.specialAbilityUsed = Boolean.parseBoolean(organismStringParts[5]);
+        this.specialAbilityCooldown = Integer.parseInt(organismStringParts[6]);
+        return this;
+    }
 }

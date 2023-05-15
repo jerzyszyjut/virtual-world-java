@@ -14,15 +14,17 @@ public class Turtle extends Animal {
 
     @Override
     public void action(Direction direction) {
-        if (Math.random() * 100 < Config.TURTLE_MOVE_CHANCE_PERCENT) {
+        if (Math.random() * 100 > Config.TURTLE_MOVE_CHANCE_PERCENT) {
             return;
         }
+        this.world.addLog("Turtle moves at " + coordinates);
         super.action(direction);
     }
 
     @Override
     public CollisionResult collision(Organism otherOrganism) {
         if (otherOrganism.getStrength() < Config.TURTLE_REFLECT_STRENGTH) {
+            this.world.addLog("Turtle reflects attack from " + otherOrganism.getSpecies() + " at " + coordinates);
             return CollisionResult.TIE;
         }
         return super.collision(otherOrganism);

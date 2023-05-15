@@ -9,14 +9,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class MyPanel extends JPanel implements ActionListener {
+class BoardPanel extends JPanel implements ActionListener {
     protected Species chosenSpecies = Species.WOLF;
     protected JComboBox<String> chooseSpecies;
     protected JLabel cooldownInfo;
     World world;
     Graphics graphics;
 
-    public MyPanel(World world) {
+    public BoardPanel(World world) {
         this.world = world;
         setBorder(BorderFactory.createLineBorder(Color.black));
         initMenu();

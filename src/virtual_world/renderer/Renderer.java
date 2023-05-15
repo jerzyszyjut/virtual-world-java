@@ -1,10 +1,8 @@
 package virtual_world.renderer;
 
-import virtual_world.Config;
 import virtual_world.World;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Renderer {
     protected World world;
@@ -14,7 +12,7 @@ public class Renderer {
         JFrame f = new JFrame("Virtual World");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel mainPanel = new JPanel();
-        MyPanel panel = new MyPanel(world);
+        BoardPanel panel = new BoardPanel(world);
         panel.setFocusable(true);
         LegendPanel legendPanel = new LegendPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));

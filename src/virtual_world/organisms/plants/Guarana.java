@@ -24,6 +24,7 @@ public class Guarana extends Plant {
     public CollisionResult collision(Organism secondOrganism, boolean isAttacked) {
         CollisionResult collisionResult = super.collision(secondOrganism, isAttacked);
         if (collisionResult == CollisionResult.DEFEAT) {
+            this.world.addLog(this.species + " boosted " + secondOrganism.getSpecies() + " at " + this.coordinates.toString() + "!");
             secondOrganism.setStrength(secondOrganism.getStrength() + Config.GUARANA_STRENGTH_BOOST);
         }
         return collisionResult;

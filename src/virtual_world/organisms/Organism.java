@@ -45,9 +45,9 @@ abstract public class Organism {
     public CollisionResult collision(Organism secondOrganism, boolean isAttacked) {
         if (!isAttacked) {
             CollisionResult collisionResult = secondOrganism.collision(this, true);
-            if (isStrongerThan(secondOrganism) && collisionResult == CollisionResult.TIE) {
+            if (isStrongerThan(secondOrganism) && (collisionResult == CollisionResult.TIE || collisionResult == collisionResult.ESCAPED)) {
                 this.world.addLog(this.getSpecies() + " tied a fight with " + secondOrganism.getSpecies() + " at " + this.getCoordinates().toString());
-                return CollisionResult.TIE;
+                return collisionResult;
             }
         }
         if (this.isStrongerThan(secondOrganism, isAttacked)) {

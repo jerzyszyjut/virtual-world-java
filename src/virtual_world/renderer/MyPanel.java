@@ -8,13 +8,16 @@ import virtual_world.organisms.plants.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class MyPanel extends JPanel implements ActionListener {
-
+    private Renderer renderer;
     World world;
     Graphics g;
-    protected Species chosenSpecies = null;
+    protected Species chosenSpecies = Species.WOLF;
     protected JComboBox<String> chooseSpecies;
+    protected List<JLabel> logs;
 
     private void initMenu() {
         JButton next = new JButton("Next turn");
@@ -61,8 +64,9 @@ class MyPanel extends JPanel implements ActionListener {
         }
     }
 
-    public MyPanel(World world) {
+    public MyPanel(World world, Renderer renderer) {
         this.world = world;
+        this.renderer = renderer;
         setBorder(BorderFactory.createLineBorder(Color.black));
         initMenu();
 
@@ -112,15 +116,8 @@ class MyPanel extends JPanel implements ActionListener {
             square.setX(organism.getCoordinates().getX() * Config.FIELD_SIZE);
             square.setY(organism.getCoordinates().getY() * Config.FIELD_SIZE);
             repaint();
-            renderLog();
+            renderer.renderLogs();
         }
-    }
-
-    public void renderLog() {
-        for (String log : world.getLogs()) {
-            System.out.println(log);
-        }
-        world.clearLogs();
     }
 
     public Dimension getPreferredSize() {

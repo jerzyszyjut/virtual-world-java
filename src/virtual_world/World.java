@@ -27,8 +27,6 @@ public class World {
         this.organisms = new Organism[width][height];
         this.player = new Human();
         addOrganism(this.player);
-        addOrganism(new Wolf(new Coordinates(5, 5)));
-        addOrganism(new Sheep(new Coordinates(3, 3)));
     }
 
     public ArrayList<Organism> getOrganismsList() {
@@ -170,38 +168,17 @@ public class World {
                 String[] organismString = line.split("\t");
                 Organism organism = null;
                 Species species = Species.valueOf(organismString[0]);
-                switch (species)
-                {
-                    case WOLF:
-                        organism = new Wolf();
-                        break;
-                    case SHEEP:
-                        organism = new Sheep();
-                        break;
-                    case FOX:
-                        organism = new Fox();
-                        break;
-                    case TURTLE:
-                        organism = new Turtle();
-                        break;
-                    case ANTELOPE:
-                        organism = new Antelope();
-                        break;
-                    case GRASS:
-                        organism = new Grass();
-                        break;
-                    case DANDELION:
-                        organism = new Dandelion();
-                        break;
-                    case GUARANA:
-                        organism = new Guarana();
-                        break;
-                    case BELLADONNA:
-                        organism = new Belladonna();
-                        break;
-                    case HERACLEUM_SOSNOWSKYI:
-                        organism = new HeracleumSosnowskyi();
-                        break;
+                switch (species) {
+                    case WOLF -> organism = new Wolf();
+                    case SHEEP -> organism = new Sheep();
+                    case FOX -> organism = new Fox();
+                    case TURTLE -> organism = new Turtle();
+                    case ANTELOPE -> organism = new Antelope();
+                    case GRASS -> organism = new Grass();
+                    case DANDELION -> organism = new Dandelion();
+                    case GUARANA -> organism = new Guarana();
+                    case BELLADONNA -> organism = new Belladonna();
+                    case HERACLEUM_SOSNOWSKYI -> organism = new HeracleumSosnowskyi();
                 }
                 organism.fromString(line);
                 this.addOrganism(organism);

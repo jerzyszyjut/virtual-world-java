@@ -40,5 +40,6 @@ public class Config {
     public static Color BELLADONNA_COLOR = Color.BLACK;
     public static Color HERACLEUM_SOSNOWSKYI_COLOR = Color.MAGENTA;
     public static Color HUMAN_COLOR = Color.BLUE;
-
+    public static int X_BOARD_OFFSET = 150;
+    public static int TEXT_LINE_HEIGHT = 20;
 }

@@ -5,11 +5,7 @@ import virtual_world.organisms.Organism;
 import virtual_world.organisms.animals.*;
 import virtual_world.organisms.plants.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,16 +18,33 @@ import java.awt.event.*;
 
 public class Renderer {
     protected World world;
+    protected LogsPanel logsPanel;
 
     public Renderer(World world) {
         this.world = world;
         JFrame f = new JFrame("Virtual World");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MyPanel panel = new MyPanel(world);
+        MyPanel panel = new MyPanel(world, this);
         panel.setFocusable(true);
-        f.add(panel);
+        logsPanel = new LogsPanel();
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
+        mainPanel.add(panel);
+        mainPanel.add(logsPanel);
+        f.add(mainPanel);
         f.pack();
         f.setVisible(true);
+    }
+
+    public void renderLogs() {
+        String[] logs = world.getLogs().toArray(new String[0]);
+        for (String log : logs) {
+            logsPanel.addLog(log);
+        }
+        logsPanel.repaint();
+        logsPanel.renderLogs();
+        world.clearLogs();
+        logsPanel.clearLogs();
     }
 }
 

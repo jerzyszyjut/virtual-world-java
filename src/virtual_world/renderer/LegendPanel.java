@@ -7,7 +7,6 @@ import virtual_world.organisms.plants.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.security.KeyPair;
 
 public class LegendPanel extends JPanel {
     public LegendPanel() {
@@ -19,11 +18,9 @@ public class LegendPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         this.removeAll();
         int i = 0;
-        for(Species species : Species.values())
-        {
+        for (Species species : Species.values()) {
             Organism organism = null;
-            switch (species)
-            {
+            switch (species) {
                 case SHEEP -> organism = new Sheep();
                 case WOLF -> organism = new Wolf();
                 case FOX -> organism = new Fox();
@@ -36,7 +33,7 @@ public class LegendPanel extends JPanel {
                 case HERACLEUM_SOSNOWSKYI -> organism = new HeracleumSosnowskyi();
                 case HUMAN -> organism = new Human();
             }
-            if(organism == null) {
+            if (organism == null) {
                 continue;
             }
             Color borderColor = organism instanceof Animal ? Color.BLACK : Color.WHITE;

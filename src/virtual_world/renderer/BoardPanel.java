@@ -13,11 +13,13 @@ class BoardPanel extends JPanel implements ActionListener {
     protected Species chosenSpecies = Species.WOLF;
     protected JComboBox<String> chooseSpecies;
     protected JLabel cooldownInfo;
-    World world;
-    Graphics graphics;
+    private World world;
+    private Graphics graphics;
+    private LogsPanel logsPanel;
 
-    public BoardPanel(World world) {
+    public BoardPanel(World world, LogsPanel logsPanel) {
         this.world = world;
+        this.logsPanel = logsPanel;
         setBorder(BorderFactory.createLineBorder(Color.black));
         initMenu();
 
@@ -37,12 +39,11 @@ class BoardPanel extends JPanel implements ActionListener {
                         case KeyEvent.VK_DOWN -> player.action(Direction.DOWN);
                         case KeyEvent.VK_LEFT -> player.action(Direction.LEFT);
                         case KeyEvent.VK_RIGHT -> player.action(Direction.RIGHT);
-                        case KeyEvent.VK_SPACE -> ((Human)player).useSpecialAbility();
+                        case KeyEvent.VK_SPACE -> ((Human) player).useSpecialAbility();
                     }
                 }
 
-                if(e.getKeyCode() != KeyEvent.VK_SPACE)
-                {
+                if (e.getKeyCode() != KeyEvent.VK_SPACE) {
                     world.nextTurn();
                 }
                 performRedraw();
@@ -102,8 +103,7 @@ class BoardPanel extends JPanel implements ActionListener {
             world.loadWorldStateFromFile("save.txt");
             performRedraw();
         } else if ("next".equals(e.getActionCommand())) {
-            if(world.getPlayer() != null)
-            {
+            if (world.getPlayer() != null) {
                 world.getPlayer().performSpecialAbility();
             }
             world.nextTurn();
@@ -114,30 +114,20 @@ class BoardPanel extends JPanel implements ActionListener {
     }
 
     private void performRedraw() {
-        renderLogs();
         renderCooldownInfo();
         repaint();
-    }
-
-    private void renderLogs() {
-        System.out.println("======= Turn: " + world.getTurn() + " =======");
-        for (String log : world.getLogs()) {
-            System.out.println(log);
-        }
-        this.world.clearLogs();
     }
 
     private void renderCooldownInfo() {
         cooldownInfo.setText(getCooldownInfo());
     }
 
-    private void renderGrid()
-    {
+    private void renderGrid() {
         graphics.setColor(Color.BLACK);
-        for(int i = 0; i <= world.getWidth(); i++) {
+        for (int i = 0; i <= world.getWidth(); i++) {
             graphics.drawLine(i * Config.FIELD_SIZE, Config.Y_OFFSET, i * Config.FIELD_SIZE, world.getHeight() * Config.FIELD_SIZE + Config.Y_OFFSET);
         }
-        for(int i = 0; i <= world.getHeight(); i++) {
+        for (int i = 0; i <= world.getHeight(); i++) {
             graphics.drawLine(0, i * Config.FIELD_SIZE + Config.Y_OFFSET, world.getWidth() * Config.FIELD_SIZE, i * Config.FIELD_SIZE + Config.Y_OFFSET);
         }
     }
@@ -147,6 +137,7 @@ class BoardPanel extends JPanel implements ActionListener {
     }
 
     public void paintComponent(Graphics graphics) {
+        logsPanel.paintComponent(graphics);
         super.paintComponent(graphics);
 
         this.graphics = graphics;
@@ -157,8 +148,7 @@ class BoardPanel extends JPanel implements ActionListener {
         }
     }
 
-    public void paintOrganism(Organism organism)
-    {
+    public void paintOrganism(Organism organism) {
         Color borderColor = organism instanceof Animal ? Color.BLACK : Color.WHITE;
         Square square = new Square(organism.getCoordinates().getX() * Config.FIELD_SIZE,
                 organism.getCoordinates().getY() * Config.FIELD_SIZE + Config.Y_OFFSET,
@@ -207,18 +197,14 @@ class BoardPanel extends JPanel implements ActionListener {
 
     private String getCooldownInfo() {
         Human player = world.getPlayer();
-        if(player == null)
-        {
+        if (player == null) {
             return "";
         }
-        if(player.isSpecialAbilityUsed())
-        {
+        if (player.isSpecialAbilityUsed()) {
             return "Ability is active for " + player.getSpecialAbilityCooldown() + " turns";
-        }
-        else if(player.getSpecialAbilityCooldown() == 0) {
+        } else if (player.getSpecialAbilityCooldown() == 0) {
             return "Ability is ready";
-        }
-        else {
+        } else {
             return "Ability is on cooldown for " + player.getSpecialAbilityCooldown() + " turns";
         }
     }

@@ -24,20 +24,14 @@ public class Human extends Animal {
         super.action(direction);
     }
 
-    public void performSpecialAbility()
-    {
-        if(specialAbilityUsed)
-        {
-            for(int i=-1; i<=1; i++)
-            {
-                for(int j=-1; j<=1; j++)
-                {
+    public void performSpecialAbility() {
+        if (specialAbilityUsed) {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
                     Coordinates newCoordinates = new Coordinates(coordinates.getX() + i, coordinates.getY() + j);
-                    if(world.isInWorld(newCoordinates))
-                    {
+                    if (world.isInWorld(newCoordinates)) {
                         Organism organism = world.getOrganism(newCoordinates);
-                        if(organism != null && organism != this)
-                        {
+                        if (organism != null && organism != this) {
                             organism.die();
                         }
                     }
@@ -60,20 +54,17 @@ public class Human extends Animal {
     }
 
     public void useSpecialAbility() {
-        if(specialAbilityCooldown == 0)
-        {
+        if (specialAbilityCooldown == 0) {
             specialAbilityUsed = true;
             specialAbilityCooldown = Config.HUMAN_SPECIAL_ABILITY_COOLDOWN;
         }
     }
 
     public void decrementSpecialAbilityCooldown() {
-        if(specialAbilityCooldown > 0)
-        {
+        if (specialAbilityCooldown > 0) {
             specialAbilityCooldown--;
         }
-        if(specialAbilityUsed && specialAbilityCooldown == 0)
-        {
+        if (specialAbilityUsed && specialAbilityCooldown == 0) {
             specialAbilityUsed = false;
             specialAbilityCooldown = Config.HUMAN_SPECIAL_ABILITY_COOLDOWN;
         }

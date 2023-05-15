@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88c9a22e-0533-44f0-acf2-b1357c3b8295" name="Changes" comment="Działa całkiem nieźle">
+      <change afterPath="$PROJECT_DIR$/src/virtual_world/renderer/LogsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/Organism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/animals/Human.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/BoardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/LegendPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/LegendPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Square.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +83,7 @@
       <workItem from="1684086626419" duration="10530000" />
       <workItem from="1684131827333" duration="1479000" />
       <workItem from="1684133540671" duration="1397000" />
-      <workItem from="1684134945496" duration="8757000" />
+      <workItem from="1684134945496" duration="9968000" />
     </task>
     <task id="LOCAL-00001" summary="Create world and organism">
       <created>1683990232825</created>
@@ -218,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684143112725</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Działa całkiem nieźle">
+      <created>1684143838920</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1684143838920</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

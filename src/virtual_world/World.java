@@ -54,8 +54,7 @@ public class World {
             }
         }
 
-        if(player != null && player.isAlive())
-        {
+        if (player != null && player.isAlive()) {
             player.performSpecialAbility();
             player.decrementSpecialAbilityCooldown();
         }
@@ -113,14 +112,11 @@ public class World {
             return;
         Coordinates oldCoordinates = organism.getCoordinates();
         Organism previousOrganism = this.organisms[coordinates.getX()][coordinates.getY()];
-        if(previousOrganism != null)
-        {
-            if(previousOrganism.isAlive())
-            {
+        if (previousOrganism != null) {
+            if (previousOrganism.isAlive()) {
                 return;
             }
-            if(previousOrganism.getSpecies() == Species.HUMAN)
-            {
+            if (previousOrganism.getSpecies() == Species.HUMAN) {
                 this.player = null;
             }
         }

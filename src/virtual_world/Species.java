@@ -15,11 +15,11 @@ public enum Species {
 
     private static final Species[] values = values();
 
-    public Species next() {
-        Species nextValue = values[(this.ordinal() + 1) % values.length];
-        if(nextValue == HUMAN) {
-            return nextValue.next();
+    public static Species[] allWithoutHuman () {
+        Species[] species = new Species[values.length - 1];
+        for(int i = 0; i < values.length - 1; i++) {
+            species[i] = values[i];
         }
-        return nextValue;
+        return species;
     }
 }

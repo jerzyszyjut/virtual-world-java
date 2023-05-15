@@ -43,14 +43,18 @@ public class LegendPanel extends JPanel {
             Square square = new Square(0, i * 20, organism.getColor(), borderColor);
             JLabel label = new JLabel(species.name());
             label.setLocation(25, i * 20);
-            label.setSize(100, 20);
+            label.setSize(200, 20);
             this.add(label);
             square.paintSquare(g);
             i++;
         }
+        JLabel label = new JLabel("Jerzy Szyjut 193064");
+        label.setLocation(5, i * 20);
+        label.setSize(200, 20);
+        this.add(label);
     }
 
     public Dimension getPreferredSize() {
-        return new Dimension(120, 300);
+        return new Dimension(220, 300);
     }
 }

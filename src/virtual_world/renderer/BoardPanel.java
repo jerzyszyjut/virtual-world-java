@@ -28,11 +28,6 @@ class BoardPanel extends JPanel implements ActionListener {
         });
 
         addKeyListener(new KeyListener() {
-
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
             @Override
             public void keyPressed(KeyEvent e) {
                 Organism player = world.getPlayer();
@@ -51,6 +46,10 @@ class BoardPanel extends JPanel implements ActionListener {
                     world.nextTurn();
                 }
                 performRedraw();
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
             }
 
             @Override
@@ -115,7 +114,6 @@ class BoardPanel extends JPanel implements ActionListener {
     }
 
     private void performRedraw() {
-        renderGrid();
         renderLogs();
         renderCooldownInfo();
         repaint();
@@ -155,13 +153,18 @@ class BoardPanel extends JPanel implements ActionListener {
 
         renderGrid();
         for (Organism organism : world.getOrganismsList()) {
-            Color borderColor = organism instanceof Animal ? Color.BLACK : Color.WHITE;
-            Square square = new Square(organism.getCoordinates().getX() * Config.FIELD_SIZE,
-                    organism.getCoordinates().getY() * Config.FIELD_SIZE + Config.Y_OFFSET,
-                    organism.getColor(),
-                    borderColor);
-            square.paintSquare(graphics);
+            paintOrganism(organism);
         }
+    }
+
+    public void paintOrganism(Organism organism)
+    {
+        Color borderColor = organism instanceof Animal ? Color.BLACK : Color.WHITE;
+        Square square = new Square(organism.getCoordinates().getX() * Config.FIELD_SIZE,
+                organism.getCoordinates().getY() * Config.FIELD_SIZE + Config.Y_OFFSET,
+                organism.getColor(),
+                borderColor);
+        square.paintSquare(graphics);
     }
 
     private void setOrganism(int x, int y) {

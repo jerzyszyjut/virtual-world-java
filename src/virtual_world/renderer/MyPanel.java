@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 class MyPanel extends JPanel implements ActionListener {
-    private Renderer renderer;
     World world;
     Graphics g;
     protected Species chosenSpecies = Species.WOLF;
@@ -64,9 +63,8 @@ class MyPanel extends JPanel implements ActionListener {
         }
     }
 
-    public MyPanel(World world, Renderer renderer) {
+    public MyPanel(World world) {
         this.world = world;
-        this.renderer = renderer;
         setBorder(BorderFactory.createLineBorder(Color.black));
         initMenu();
 
@@ -116,7 +114,14 @@ class MyPanel extends JPanel implements ActionListener {
             square.setX(organism.getCoordinates().getX() * Config.FIELD_SIZE);
             square.setY(organism.getCoordinates().getY() * Config.FIELD_SIZE);
             repaint();
-            renderer.renderLogs();
+            renderLogs();
+        }
+    }
+
+    private void renderLogs() {
+        for(String log: world.getLogs())
+        {
+            System.out.println(log);
         }
     }
 

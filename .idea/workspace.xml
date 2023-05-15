@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88c9a22e-0533-44f0-acf2-b1357c3b8295" name="Changes" comment="Działa">
-      <change afterPath="$PROJECT_DIR$/src/virtual_world/renderer/LogsPanel.java" afterDir="false" />
+    <list default="true" id="88c9a22e-0533-44f0-acf2-b1357c3b8295" name="Changes" comment="Logs panel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/LogsPanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/MyPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" afterDir="false" />
     </list>
@@ -80,7 +78,7 @@
       <workItem from="1684086626419" duration="10530000" />
       <workItem from="1684131827333" duration="1479000" />
       <workItem from="1684133540671" duration="1397000" />
-      <workItem from="1684134945496" duration="1667000" />
+      <workItem from="1684134945496" duration="1825000" />
     </task>
     <task id="LOCAL-00001" summary="Create world and organism">
       <created>1683990232825</created>
@@ -166,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684134096563</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Logs panel">
+      <created>1684136663615</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684136663615</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +189,8 @@
     <MESSAGE value="Works?" />
     <MESSAGE value="Działą" />
     <MESSAGE value="Działa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Działa" />
+    <MESSAGE value="Logs panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logs panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

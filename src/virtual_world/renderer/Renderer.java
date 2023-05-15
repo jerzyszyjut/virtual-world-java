@@ -18,33 +18,18 @@ import java.awt.event.*;
 
 public class Renderer {
     protected World world;
-    protected LogsPanel logsPanel;
-
     public Renderer(World world) {
         this.world = world;
         JFrame f = new JFrame("Virtual World");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MyPanel panel = new MyPanel(world, this);
+        MyPanel panel = new MyPanel(world);
         panel.setFocusable(true);
-        logsPanel = new LogsPanel();
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
         mainPanel.add(panel);
-        mainPanel.add(logsPanel);
         f.add(mainPanel);
         f.pack();
         f.setVisible(true);
-    }
-
-    public void renderLogs() {
-        String[] logs = world.getLogs().toArray(new String[0]);
-        for (String log : logs) {
-            logsPanel.addLog(log);
-        }
-        logsPanel.repaint();
-        logsPanel.renderLogs();
-        world.clearLogs();
-        logsPanel.clearLogs();
     }
 }
 

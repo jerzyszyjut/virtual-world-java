@@ -6,12 +6,12 @@ import java.awt.*;
 
 class Square {
 
-    private int x;
-    private int y;
     private final int width = Config.FIELD_SIZE;
     private final int height = Config.FIELD_SIZE;
-    private Color color;
     private final Color borderColor;
+    private int x;
+    private int y;
+    private Color color;
 
     public Square(int x, int y, Color color, Color borderColor) {
         this.x = x;

@@ -13,9 +13,9 @@ class BoardPanel extends JPanel implements ActionListener {
     protected Species chosenSpecies = Species.WOLF;
     protected JComboBox<String> chooseSpecies;
     protected JLabel cooldownInfo;
-    private World world;
+    private final World world;
     private Graphics graphics;
-    private LogsPanel logsPanel;
+    private final LogsPanel logsPanel;
 
     public BoardPanel(World world, LogsPanel logsPanel) {
         this.world = world;

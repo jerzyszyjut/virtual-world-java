@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LogsPanel extends JPanel {
-    private JTextArea textArea;
-    private JLabel turnCounter;
-    private World world;
+    private final JTextArea textArea;
+    private final JLabel turnCounter;
+    private final World world;
     private int previousTurn = 0;
 
     public LogsPanel(World world) {
@@ -29,7 +29,7 @@ public class LogsPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if(previousTurn != world.getTurn()) {
+        if (previousTurn != world.getTurn()) {
             this.previousTurn = world.getTurn();
         } else {
             return;

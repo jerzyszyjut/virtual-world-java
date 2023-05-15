@@ -42,4 +42,16 @@ public class Config {
     public static Color HUMAN_COLOR = Color.BLUE;
     public static int HUMAN_SPECIAL_ABILITY_COOLDOWN = 5;
     public static int Y_OFFSET = 100;
+    public static int LINE_HEIGHT = 20;
+    public static int LEGEND_WIDTH = 250;
+    public static int LEGEND_HEIGHT = 300;
+    public static int LEGEND_TEXT_PADDING = 5;
+    public static int BOARD_BUTTONS_BOUNDS_X = 50;
+    public static int BOARD_BUTTONS_BOUNDS_Y = 100;
+    public static int BOARD_BUTTONS_BOUNDS_WIDTH = 95;
+    public static int BOARD_BUTTONS_BOUNDS_HEIGHT = 30;
+    public static int BOARD_WIDTH = 400;
+    public static int BOARD_HEIGHT = 500;
+    public static int MAP_WIDTH = 20;
+    public static int MAP_HEIGHT = 20;
 }

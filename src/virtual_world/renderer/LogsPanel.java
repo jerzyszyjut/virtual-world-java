@@ -1,5 +1,6 @@
 package virtual_world.renderer;
 
+import virtual_world.Config;
 import virtual_world.World;
 
 import javax.swing.*;
@@ -51,6 +52,6 @@ public class LogsPanel extends JPanel {
     }
 
     public Dimension getPreferredSize() {
-        return new Dimension(400, 300);
+        return new Dimension(Config.BOARD_WIDTH, Config.BOARD_HEIGHT);
     }
 }

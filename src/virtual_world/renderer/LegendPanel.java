@@ -1,5 +1,6 @@
 package virtual_world.renderer;
 
+import virtual_world.Config;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 import virtual_world.organisms.animals.*;
@@ -37,21 +38,21 @@ public class LegendPanel extends JPanel {
                 continue;
             }
             Color borderColor = organism instanceof Animal ? Color.BLACK : Color.WHITE;
-            Square square = new Square(0, i * 20, organism.getColor(), borderColor);
+            Square square = new Square(0, i * Config.LINE_HEIGHT , organism.getColor(), borderColor);
             JLabel label = new JLabel(species.name());
-            label.setLocation(25, i * 20);
-            label.setSize(200, 20);
+            label.setLocation(Config.FIELD_SIZE + Config.LEGEND_TEXT_PADDING, i * Config.LINE_HEIGHT);
+            label.setSize(Config.LEGEND_WIDTH, Config.LINE_HEIGHT);
             this.add(label);
             square.paintSquare(g);
             i++;
         }
         JLabel label = new JLabel("Jerzy Szyjut 193064");
-        label.setLocation(5, i * 20);
-        label.setSize(200, 20);
+        label.setLocation(Config.LEGEND_TEXT_PADDING, i * Config.LINE_HEIGHT);
+        label.setSize(Config.LEGEND_WIDTH, Config.LINE_HEIGHT);
         this.add(label);
     }
 
     public Dimension getPreferredSize() {
-        return new Dimension(220, 300);
+        return new Dimension(Config.LEGEND_WIDTH, Config.LEGEND_HEIGHT);
     }
 }

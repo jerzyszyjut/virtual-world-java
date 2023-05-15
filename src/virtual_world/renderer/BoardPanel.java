@@ -62,21 +62,21 @@ class BoardPanel extends JPanel implements ActionListener {
 
     private void initMenu() {
         JButton next = new JButton("Next turn");
-        next.setBounds(50, 100, 95, 30);
+        next.setBounds(Config.BOARD_BUTTONS_BOUNDS_X, Config.BOARD_BUTTONS_BOUNDS_Y, Config.BOARD_BUTTONS_BOUNDS_WIDTH, Config.BOARD_BUTTONS_BOUNDS_HEIGHT);
         next.setActionCommand("next");
         next.addActionListener(this);
         next.setFocusable(false);
         this.add(next);
 
         JButton save = new JButton("Save");
-        save.setBounds(50, 100, 95, 30);
+        save.setBounds(Config.BOARD_BUTTONS_BOUNDS_X, Config.BOARD_BUTTONS_BOUNDS_Y, Config.BOARD_BUTTONS_BOUNDS_WIDTH, Config.BOARD_BUTTONS_BOUNDS_HEIGHT);
         save.setActionCommand("save");
         save.addActionListener(this);
         save.setFocusable(false);
         this.add(save);
 
         JButton load = new JButton("Load");
-        load.setBounds(50, 100, 95, 30);
+        load.setBounds(Config.BOARD_BUTTONS_BOUNDS_X, Config.BOARD_BUTTONS_BOUNDS_Y, Config.BOARD_BUTTONS_BOUNDS_WIDTH, Config.BOARD_BUTTONS_BOUNDS_HEIGHT);
         load.setActionCommand("load");
         load.addActionListener(this);
         load.setFocusable(false);
@@ -84,14 +84,14 @@ class BoardPanel extends JPanel implements ActionListener {
 
         chooseSpecies = new JComboBox<>(getComboboxOptions());
         chooseSpecies.setSelectedIndex(0);
-        chooseSpecies.setBounds(50, 100, 95, 30);
+        chooseSpecies.setBounds(Config.BOARD_BUTTONS_BOUNDS_X, Config.BOARD_BUTTONS_BOUNDS_Y, Config.BOARD_BUTTONS_BOUNDS_WIDTH, Config.BOARD_BUTTONS_BOUNDS_HEIGHT);
         chooseSpecies.setActionCommand("chooseSpecies");
         chooseSpecies.addActionListener(this);
         chooseSpecies.setFocusable(false);
         this.add(chooseSpecies);
 
         cooldownInfo = new JLabel(getCooldownInfo());
-        cooldownInfo.setBounds(50, 100, 95, 30);
+        cooldownInfo.setBounds(Config.BOARD_BUTTONS_BOUNDS_X, Config.BOARD_BUTTONS_BOUNDS_Y, Config.BOARD_BUTTONS_BOUNDS_WIDTH, Config.BOARD_BUTTONS_BOUNDS_HEIGHT);
         cooldownInfo.setFocusable(false);
         this.add(cooldownInfo);
     }
@@ -159,8 +159,8 @@ class BoardPanel extends JPanel implements ActionListener {
 
     private void setOrganism(int x, int y) {
 
-        Coordinates pos = new Coordinates(x / Config.FIELD_SIZE, (y - Config.Y_OFFSET) / Config.FIELD_SIZE);
-        if (!world.isInWorld(pos)) {
+        Coordinates position = new Coordinates(x / Config.FIELD_SIZE, (y - Config.Y_OFFSET) / Config.FIELD_SIZE);
+        if (!world.isInWorld(position)) {
             return;
         }
         Organism org = null;
@@ -168,16 +168,16 @@ class BoardPanel extends JPanel implements ActionListener {
             return;
         }
         switch (chosenSpecies) {
-            case FOX -> org = new Fox(pos);
-            case SHEEP -> org = new Sheep(pos);
-            case WOLF -> org = new Wolf(pos);
-            case TURTLE -> org = new Turtle(pos);
-            case ANTELOPE -> org = new Antelope(pos);
-            case GRASS -> org = new Grass(pos);
-            case DANDELION -> org = new Dandelion(pos);
-            case GUARANA -> org = new Guarana(pos);
-            case BELLADONNA -> org = new Belladonna(pos);
-            case HERACLEUM_SOSNOWSKYI -> org = new HeracleumSosnowskyi(pos);
+            case FOX -> org = new Fox(position);
+            case SHEEP -> org = new Sheep(position);
+            case WOLF -> org = new Wolf(position);
+            case TURTLE -> org = new Turtle(position);
+            case ANTELOPE -> org = new Antelope(position);
+            case GRASS -> org = new Grass(position);
+            case DANDELION -> org = new Dandelion(position);
+            case GUARANA -> org = new Guarana(position);
+            case BELLADONNA -> org = new Belladonna(position);
+            case HERACLEUM_SOSNOWSKYI -> org = new HeracleumSosnowskyi(position);
         }
         if (org == null) {
             return;

@@ -13,48 +13,17 @@ public class Renderer {
         this.world = world;
         JFrame f = new JFrame("Virtual World");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel mainPanel = new JPanel();
         MyPanel panel = new MyPanel(world);
         panel.setFocusable(true);
-        JPanel mainPanel = new JPanel();
+        LegendPanel legendPanel = new LegendPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
         mainPanel.add(panel);
+        mainPanel.add(legendPanel);
         f.add(mainPanel);
         f.pack();
         f.setVisible(true);
     }
 }
 
-class Square {
 
-    private int x, y, width = Config.FIELD_SIZE, height = Config.FIELD_SIZE;
-    private Color color, borderColor;
-
-    public Square(int x, int y, Color color, Color borderColor) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.borderColor = borderColor;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-
-    public void setX(int xPos) {
-        this.x = xPos;
-    }
-
-
-    public void setY(int yPos) {
-        this.y = yPos;
-    }
-
-
-    public void paintSquare(Graphics graphics) {
-        graphics.setColor(this.color);
-        graphics.fillRect(x, y, width, height);
-        graphics.setColor(this.borderColor);
-        graphics.drawRect(x, y, width, height);
-    }
-}

@@ -41,4 +41,5 @@ public class Config {
     public static Color HERACLEUM_SOSNOWSKYI_COLOR = Color.MAGENTA;
     public static Color HUMAN_COLOR = Color.BLUE;
     public static int HUMAN_SPECIAL_ABILITY_COOLDOWN = 5;
+    public static int Y_OFFSET = 100;
 }

@@ -137,15 +137,15 @@ class MyPanel extends JPanel implements ActionListener {
     {
         graphics.setColor(Color.BLACK);
         for(int i = 0; i <= world.getWidth(); i++) {
-            graphics.drawLine(i * Config.FIELD_SIZE, 0, i * Config.FIELD_SIZE, world.getHeight() * Config.FIELD_SIZE);
+            graphics.drawLine(i * Config.FIELD_SIZE, Config.Y_OFFSET, i * Config.FIELD_SIZE, world.getHeight() * Config.FIELD_SIZE + Config.Y_OFFSET);
         }
         for(int i = 0; i <= world.getHeight(); i++) {
-            graphics.drawLine(0, i * Config.FIELD_SIZE, world.getWidth() * Config.FIELD_SIZE, i * Config.FIELD_SIZE);
+            graphics.drawLine(0, i * Config.FIELD_SIZE + Config.Y_OFFSET, world.getWidth() * Config.FIELD_SIZE, i * Config.FIELD_SIZE + Config.Y_OFFSET);
         }
     }
 
     public Dimension getPreferredSize() {
-        return new Dimension(800, 600);
+        return new Dimension(400, 400 + Config.Y_OFFSET);
     }
 
     public void paintComponent(Graphics graphics) {
@@ -157,7 +157,7 @@ class MyPanel extends JPanel implements ActionListener {
         for (Organism organism : world.getOrganismsList()) {
             Color borderColor = organism instanceof Animal ? Color.BLACK : Color.WHITE;
             Square square = new Square(organism.getCoordinates().getX() * Config.FIELD_SIZE,
-                    organism.getCoordinates().getY() * Config.FIELD_SIZE,
+                    organism.getCoordinates().getY() * Config.FIELD_SIZE + Config.Y_OFFSET,
                     organism.getColor(),
                     borderColor);
             square.paintSquare(graphics);
@@ -166,7 +166,7 @@ class MyPanel extends JPanel implements ActionListener {
 
     private void setOrganism(int x, int y) {
 
-        Coordinates pos = new Coordinates(x / Config.FIELD_SIZE, y / Config.FIELD_SIZE);
+        Coordinates pos = new Coordinates(x / Config.FIELD_SIZE, (y - Config.Y_OFFSET) / Config.FIELD_SIZE);
         if (!world.isInWorld(pos)) {
             return;
         }

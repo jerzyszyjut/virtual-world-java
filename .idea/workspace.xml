@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88c9a22e-0533-44f0-acf2-b1357c3b8295" name="Changes" comment="wip">
+    <list default="true" id="88c9a22e-0533-44f0-acf2-b1357c3b8295" name="Changes" comment="Kind of works">
+      <change afterPath="$PROJECT_DIR$/src/virtual_world/renderer/LegendPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Square.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/Simulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_world/organisms/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/organisms/Organism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/virtual_world/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/MyPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_world/renderer/Renderer.java" afterDir="false" />
     </list>
@@ -80,7 +80,7 @@
       <workItem from="1684086626419" duration="10530000" />
       <workItem from="1684131827333" duration="1479000" />
       <workItem from="1684133540671" duration="1397000" />
-      <workItem from="1684134945496" duration="4662000" />
+      <workItem from="1684134945496" duration="5887000" />
     </task>
     <task id="LOCAL-00001" summary="Create world and organism">
       <created>1683990232825</created>
@@ -194,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684138262115</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Kind of works">
+      <created>1684139688158</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1684139688158</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +222,8 @@
     <MESSAGE value="Działa" />
     <MESSAGE value="Clean code" />
     <MESSAGE value="wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip" />
+    <MESSAGE value="Kind of works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kind of works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

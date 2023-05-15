@@ -12,6 +12,7 @@ import java.awt.event.*;
 class MyPanel extends JPanel implements ActionListener {
     protected Species chosenSpecies = Species.WOLF;
     protected JComboBox<String> chooseSpecies;
+    protected JLabel cooldownInfo;
     World world;
     Graphics g;
 
@@ -34,8 +35,6 @@ class MyPanel extends JPanel implements ActionListener {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                world.nextTurn();
-
                 Organism player = world.getPlayer();
                 if (player != null) {
                     switch (e.getKeyCode()) {
@@ -43,11 +42,15 @@ class MyPanel extends JPanel implements ActionListener {
                         case KeyEvent.VK_DOWN -> player.action(Direction.DOWN);
                         case KeyEvent.VK_LEFT -> player.action(Direction.LEFT);
                         case KeyEvent.VK_RIGHT -> player.action(Direction.RIGHT);
+                        case KeyEvent.VK_SPACE -> ((Human)player).useSpecialAbility();
                     }
                 }
 
+                if(e.getKeyCode() != KeyEvent.VK_SPACE)
+                {
+                    world.nextTurn();
+                }
                 performRedraw();
-
             }
 
             @Override
@@ -86,6 +89,11 @@ class MyPanel extends JPanel implements ActionListener {
         chooseSpecies.addActionListener(this);
         chooseSpecies.setFocusable(false);
         this.add(chooseSpecies);
+
+        cooldownInfo = new JLabel(getCooldownInfo());
+        cooldownInfo.setBounds(50, 100, 95, 30);
+        cooldownInfo.setFocusable(false);
+        this.add(cooldownInfo);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -95,6 +103,7 @@ class MyPanel extends JPanel implements ActionListener {
             world.loadWorldStateFromFile("save.txt");
             performRedraw();
         } else if ("next".equals(e.getActionCommand())) {
+            ((Human)world.getPlayer()).performSpecialAbility();
             world.nextTurn();
             performRedraw();
         } else if ("chooseSpecies".equals(e.getActionCommand())) {
@@ -110,6 +119,7 @@ class MyPanel extends JPanel implements ActionListener {
             square.setY(organism.getCoordinates().getY() * Config.FIELD_SIZE);
             repaint();
             renderLogs();
+            renderCooldownInfo();
         }
     }
 
@@ -117,6 +127,10 @@ class MyPanel extends JPanel implements ActionListener {
         for (String log : world.getLogs()) {
             System.out.println(log);
         }
+    }
+
+    private void renderCooldownInfo() {
+        cooldownInfo.setText(getCooldownInfo());
     }
 
     public Dimension getPreferredSize() {
@@ -173,5 +187,23 @@ class MyPanel extends JPanel implements ActionListener {
             optionsString[i] = options[i].name();
         }
         return optionsString;
+    }
+
+    private String getCooldownInfo() {
+        Human player = (Human)world.getPlayer();
+        if(player == null)
+        {
+            return "";
+        }
+        if(player.isSpecialAbilityUsed())
+        {
+            return "Ability is active for " + player.getSpecialAbilityCooldown() + " turns";
+        }
+        else if(player.getSpecialAbilityCooldown() == 0) {
+            return "Ability is ready";
+        }
+        else {
+            return "Ability is on cooldown for " + player.getSpecialAbilityCooldown() + " turns";
+        }
     }
 }

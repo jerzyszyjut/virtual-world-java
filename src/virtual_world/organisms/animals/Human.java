@@ -2,10 +2,14 @@ package virtual_world.organisms.animals;
 
 import virtual_world.Config;
 import virtual_world.Coordinates;
+import virtual_world.Direction;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
 public class Human extends Animal {
+    private boolean specialAbilityUsed = false;
+    private int specialAbilityCooldown = 0;
+
     public Human() {
         super(Config.HUMAN_STRENGTH, Config.HUMAN_INITIATIVE, new Coordinates(0, 0), Species.HUMAN, Config.HUMAN_COLOR);
     }
@@ -15,7 +19,63 @@ public class Human extends Animal {
     }
 
     @Override
+    public void action(Direction direction) {
+        performSpecialAbility();
+        super.action(direction);
+    }
+
+    public void performSpecialAbility()
+    {
+        if(specialAbilityUsed)
+        {
+            for(int i=-1; i<=1; i++)
+            {
+                for(int j=-1; j<=1; j++)
+                {
+                    Coordinates newCoordinates = new Coordinates(coordinates.getX() + i, coordinates.getY() + j);
+                    if(world.isInWorld(newCoordinates))
+                    {
+                        Organism organism = world.getOrganism(newCoordinates);
+                        if(organism != null && organism != this)
+                        {
+                            organism.die();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
     public Organism clone() {
         return null;
+    }
+
+    public boolean isSpecialAbilityUsed() {
+        return specialAbilityUsed;
+    }
+
+    public int getSpecialAbilityCooldown() {
+        return specialAbilityCooldown;
+    }
+
+    public void useSpecialAbility() {
+        if(specialAbilityCooldown == 0)
+        {
+            specialAbilityUsed = true;
+            specialAbilityCooldown = Config.HUMAN_SPECIAL_ABILITY_COOLDOWN;
+        }
+    }
+
+    public void decrementSpecialAbilityCooldown() {
+        if(specialAbilityCooldown > 0)
+        {
+            specialAbilityCooldown--;
+        }
+        if(specialAbilityUsed && specialAbilityCooldown == 0)
+        {
+            specialAbilityUsed = false;
+            specialAbilityCooldown = Config.HUMAN_SPECIAL_ABILITY_COOLDOWN;
+        }
     }
 }

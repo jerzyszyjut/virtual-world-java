@@ -53,6 +53,12 @@ public class World {
                 organism.incrementAge();
             }
         }
+
+        if(player != null && player.isAlive())
+        {
+            ((Human)player).decrementSpecialAbilityCooldown();
+        }
+
         removeDeadOrganisms();
     }
 

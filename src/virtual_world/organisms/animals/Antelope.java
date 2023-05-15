@@ -3,8 +3,6 @@ package virtual_world.organisms.animals;
 import virtual_world.*;
 import virtual_world.organisms.Organism;
 
-import java.awt.*;
-
 public class Antelope extends Animal {
     public Antelope() {
         super(Config.ANTELOPE_STRENGTH, Config.ANTELOPE_INITIATIVE, new Coordinates(0, 0), Species.ANTELOPE, Config.ANTELOPE_COLOR);

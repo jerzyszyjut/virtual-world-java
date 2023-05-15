@@ -4,8 +4,6 @@ import virtual_world.*;
 import virtual_world.organisms.Organism;
 import virtual_world.organisms.animals.Animal;
 
-import java.awt.*;
-
 public class HeracleumSosnowskyi extends Plant {
     public HeracleumSosnowskyi() {
         super(Config.HERACLEUM_SOSNOWSKYI_STRENGTH, new Coordinates(0, 0), Species.HERACLEUM_SOSNOWSKYI, Config.HERACLEUM_SOSNOWSKYI_COLOR);

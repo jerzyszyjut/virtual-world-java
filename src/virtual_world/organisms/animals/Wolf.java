@@ -5,8 +5,6 @@ import virtual_world.Coordinates;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
-import java.awt.*;
-
 public class Wolf extends Animal {
     public Wolf() {
         super(Config.WOLF_STRENGTH, Config.WOLF_INITIATIVE, new Coordinates(0, 0), Species.WOLF, Config.WOLF_COLOR);

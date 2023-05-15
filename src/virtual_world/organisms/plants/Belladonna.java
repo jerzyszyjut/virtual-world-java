@@ -6,8 +6,6 @@ import virtual_world.Coordinates;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
-import java.awt.*;
-
 public class Belladonna extends Plant {
     public Belladonna() {
         super(Config.BELLADONNA_STRENGTH, new Coordinates(0, 0), Species.BELLADONNA, Config.BELLADONNA_COLOR);

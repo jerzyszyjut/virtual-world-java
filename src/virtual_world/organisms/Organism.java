@@ -69,8 +69,7 @@ abstract public class Organism {
                     if ((i * j) != 0) {
                         continue;
                     }
-                    if(world.isInWorld(coordinates.getX() + i, coordinates.getY() + j))
-                    {
+                    if (world.isInWorld(coordinates.getX() + i, coordinates.getY() + j)) {
                         if (world.getOrganism(coordinates.getX() + i, coordinates.getY() + j) == null) {
                             return new Coordinates(coordinates.getX() + i, coordinates.getY() + j);
                         }
@@ -80,8 +79,7 @@ abstract public class Organism {
         } else {
             for (int i = -distance; i <= distance; i++) {
                 for (int j = -distance; j <= distance; j++) {
-                    if(world.isInWorld(coordinates.getX() + i, coordinates.getY() + j))
-                    {
+                    if (world.isInWorld(coordinates.getX() + i, coordinates.getY() + j)) {
                         if (world.getOrganism(coordinates.getX() + i, coordinates.getY() + j) == null) {
                             return new Coordinates(coordinates.getX() + i, coordinates.getY() + j);
                         }

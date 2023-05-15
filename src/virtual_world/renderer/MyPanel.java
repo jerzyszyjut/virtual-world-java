@@ -8,15 +8,54 @@ import virtual_world.organisms.plants.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.List;
 
 class MyPanel extends JPanel implements ActionListener {
-    World world;
-    Graphics g;
     protected Species chosenSpecies = Species.WOLF;
     protected JComboBox<String> chooseSpecies;
-    protected List<JLabel> logs;
+    World world;
+    Graphics g;
+
+    public MyPanel(World world) {
+        this.world = world;
+        setBorder(BorderFactory.createLineBorder(Color.black));
+        initMenu();
+
+        addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                setOrganism(e.getX(), e.getY());
+            }
+        });
+
+        addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                world.nextTurn();
+
+                Organism player = world.getPlayer();
+                if (player != null) {
+                    switch (e.getKeyCode()) {
+                        case KeyEvent.VK_UP -> player.action(Direction.UP);
+                        case KeyEvent.VK_DOWN -> player.action(Direction.DOWN);
+                        case KeyEvent.VK_LEFT -> player.action(Direction.LEFT);
+                        case KeyEvent.VK_RIGHT -> player.action(Direction.RIGHT);
+                    }
+                }
+
+                performRedraw();
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+
+    }
 
     private void initMenu() {
         JButton next = new JButton("Next turn");
@@ -59,56 +98,12 @@ class MyPanel extends JPanel implements ActionListener {
             world.nextTurn();
             performRedraw();
         } else if ("chooseSpecies".equals(e.getActionCommand())) {
-            chosenSpecies = Species.valueOf((String)chooseSpecies.getSelectedItem());
+            chosenSpecies = Species.valueOf((String) chooseSpecies.getSelectedItem());
         }
     }
 
-    public MyPanel(World world) {
-        this.world = world;
-        setBorder(BorderFactory.createLineBorder(Color.black));
-        initMenu();
-
-        addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                setOrganism(e.getX(), e.getY());
-            }
-        });
-
-        addKeyListener(new KeyListener() {
-
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                world.nextTurn();
-
-                Organism player = world.getPlayer();
-                if(player != null)
-                {
-                    switch (e.getKeyCode()) {
-                        case KeyEvent.VK_UP -> player.action(Direction.UP);
-                        case KeyEvent.VK_DOWN -> player.action(Direction.DOWN);
-                        case KeyEvent.VK_LEFT -> player.action(Direction.LEFT);
-                        case KeyEvent.VK_RIGHT -> player.action(Direction.RIGHT);
-                    }
-                }
-
-                performRedraw();
-
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        });
-
-    }
-
     private void performRedraw() {
-        for(Organism organism: world.getOrganismsList())
-        {
+        for (Organism organism : world.getOrganismsList()) {
             Square square = new Square();
             square.setColor(organism.getColor());
             square.setX(organism.getCoordinates().getX() * Config.FIELD_SIZE);
@@ -119,8 +114,7 @@ class MyPanel extends JPanel implements ActionListener {
     }
 
     private void renderLogs() {
-        for(String log: world.getLogs())
-        {
+        for (String log : world.getLogs()) {
             System.out.println(log);
         }
     }
@@ -134,8 +128,7 @@ class MyPanel extends JPanel implements ActionListener {
 
         this.g = g;
 
-        for(Organism organism: world.getOrganismsList())
-        {
+        for (Organism organism : world.getOrganismsList()) {
             Square square = new Square();
             square.setColor(organism.getColor());
             square.setX(organism.getCoordinates().getX() * Config.FIELD_SIZE);
@@ -151,8 +144,7 @@ class MyPanel extends JPanel implements ActionListener {
             return;
         }
         Organism org = null;
-        if(chosenSpecies == null)
-        {
+        if (chosenSpecies == null) {
             return;
         }
         switch (chosenSpecies) {
@@ -167,8 +159,7 @@ class MyPanel extends JPanel implements ActionListener {
             case BELLADONNA -> org = new Belladonna(pos);
             case HERACLEUM_SOSNOWSKYI -> org = new HeracleumSosnowskyi(pos);
         }
-        if(org == null)
-        {
+        if (org == null) {
             return;
         }
         world.addOrganism(org);

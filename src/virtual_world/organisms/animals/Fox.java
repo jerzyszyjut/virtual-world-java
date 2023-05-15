@@ -6,7 +6,6 @@ import virtual_world.Direction;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Fox extends Animal {

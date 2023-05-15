@@ -3,8 +3,6 @@ package virtual_world.organisms.animals;
 import virtual_world.*;
 import virtual_world.organisms.Organism;
 
-import java.awt.*;
-
 public class Turtle extends Animal {
     public Turtle() {
         super(Config.TURTLE_STRENGTH, Config.TURTLE_INITIATIVE, new Coordinates(0, 0), Species.TURTLE, Config.TURTLE_COLOR);

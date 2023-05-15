@@ -6,8 +6,6 @@ import virtual_world.Coordinates;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
-import java.awt.*;
-
 public class Guarana extends Plant {
     public Guarana() {
         super(Config.GUARANA_STRENGTH, new Coordinates(0, 0), Species.GUARANA, Config.GUARANA_COLOR);

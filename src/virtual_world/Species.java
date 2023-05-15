@@ -15,11 +15,9 @@ public enum Species {
 
     private static final Species[] values = values();
 
-    public static Species[] allWithoutHuman () {
+    public static Species[] allWithoutHuman() {
         Species[] species = new Species[values.length - 1];
-        for(int i = 0; i < values.length - 1; i++) {
-            species[i] = values[i];
-        }
+        System.arraycopy(values, 0, species, 0, values.length - 1);
         return species;
     }
 }

@@ -1,23 +1,14 @@
 package virtual_world.renderer;
 
-import virtual_world.*;
-import virtual_world.organisms.Organism;
-import virtual_world.organisms.animals.*;
-import virtual_world.organisms.plants.*;
+import virtual_world.Config;
+import virtual_world.World;
 
 import javax.swing.*;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.*;
+import java.awt.*;
 
 public class Renderer {
     protected World world;
+
     public Renderer(World world) {
         this.world = world;
         JFrame f = new JFrame("Virtual World");
@@ -37,13 +28,9 @@ class Square {
 
     private int xPos = 50;
     private int yPos = 50;
-    private int width = Config.FIELD_SIZE;
-    private int height = Config.FIELD_SIZE;
+    private final int width = Config.FIELD_SIZE;
+    private final int height = Config.FIELD_SIZE;
     private Color color = Color.RED;
-
-    public void setX(int xPos) {
-        this.xPos = xPos;
-    }
 
     public Color getColor() {
         return color;
@@ -57,12 +44,16 @@ class Square {
         return xPos;
     }
 
-    public void setY(int yPos) {
-        this.yPos = yPos;
+    public void setX(int xPos) {
+        this.xPos = xPos;
     }
 
     public int getY() {
         return yPos;
+    }
+
+    public void setY(int yPos) {
+        this.yPos = yPos;
     }
 
     public int getWidth() {

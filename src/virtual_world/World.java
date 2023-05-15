@@ -5,7 +5,6 @@ import virtual_world.organisms.OrganismComparator;
 import virtual_world.organisms.animals.*;
 import virtual_world.organisms.plants.*;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,11 +13,11 @@ import java.util.ArrayList;
 
 public class World {
     private final Organism[][] organisms;
+    private final ArrayList<String> logs = new ArrayList<>();
     private int turn;
     private int width;
     private int height;
     private Organism player;
-    private final ArrayList<String> logs = new ArrayList<>();
 
     public World(int width, int height) {
         this.turn = 0;
@@ -47,10 +46,8 @@ public class World {
         organisms.sort(new OrganismComparator());
 
         for (Organism organism : organisms) {
-            if(organism.isAlive())
-            {
-                if(organism.getSpecies() != Species.HUMAN)
-                {
+            if (organism.isAlive()) {
+                if (organism.getSpecies() != Species.HUMAN) {
                     organism.action();
                 }
                 organism.incrementAge();
@@ -67,8 +64,7 @@ public class World {
 
     public void removeOrganism(Organism organism) {
         Coordinates coordinates = organism.getCoordinates();
-        if(organism.getSpecies() == Species.HUMAN)
-        {
+        if (organism.getSpecies() == Species.HUMAN) {
             this.player = null;
         }
         this.organisms[coordinates.getX()][coordinates.getY()] = null;
@@ -104,7 +100,7 @@ public class World {
     }
 
     public void moveOrganism(Organism organism, Coordinates coordinates) {
-        if(!this.isInWorld(coordinates))
+        if (!this.isInWorld(coordinates))
             return;
         Coordinates oldCoordinates = organism.getCoordinates();
         this.organisms[oldCoordinates.getX()][oldCoordinates.getY()] = null;
@@ -126,9 +122,8 @@ public class World {
 
             ArrayList<Organism> organisms = getOrganismsList();
             for (Organism organism : organisms) {
-                if(organism.getSpecies() != Species.HUMAN)
-                {
-                    fileWriter.write(organism.toString() + "\n");
+                if (organism.getSpecies() != Species.HUMAN) {
+                    fileWriter.write(organism + "\n");
                 }
             }
             fileWriter.close();
@@ -137,12 +132,9 @@ public class World {
         }
     }
 
-    private void clearOrganisms()
-    {
-        for(int i = 0; i < this.width; i++)
-        {
-            for(int j = 0; j < this.height; j++)
-            {
+    private void clearOrganisms() {
+        for (int i = 0; i < this.width; i++) {
+            for (int j = 0; j < this.height; j++) {
                 this.organisms[i][j] = null;
             }
         }

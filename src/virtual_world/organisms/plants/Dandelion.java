@@ -6,8 +6,6 @@ import virtual_world.Direction;
 import virtual_world.Species;
 import virtual_world.organisms.Organism;
 
-import java.awt.*;
-
 public class Dandelion extends Plant {
     public Dandelion() {
         super(Config.DANDELION_STRENGTH, new Coordinates(0, 0), Species.DANDELION, Config.DANDELION_COLOR);

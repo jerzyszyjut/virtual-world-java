@@ -7,7 +7,7 @@ public class Simulator {
     private final World world;
 
     public Simulator() {
-        this.world = new World(10, 10);
+        this.world = new World(20, 20);
         this.renderer = new Renderer(this.world);
     }
 }

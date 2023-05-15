@@ -26,52 +26,35 @@ public class Renderer {
 
 class Square {
 
-    private int xPos = 50;
-    private int yPos = 50;
-    private final int width = Config.FIELD_SIZE;
-    private final int height = Config.FIELD_SIZE;
-    private Color color = Color.RED;
+    private int x, y, width = Config.FIELD_SIZE, height = Config.FIELD_SIZE;
+    private Color color, borderColor;
 
-    public Color getColor() {
-        return color;
+    public Square(int x, int y, Color color, Color borderColor) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.borderColor = borderColor;
     }
 
     public void setColor(Color color) {
         this.color = color;
     }
 
-    public int getX() {
-        return xPos;
-    }
 
     public void setX(int xPos) {
-        this.xPos = xPos;
+        this.x = xPos;
     }
 
-    public int getY() {
-        return yPos;
-    }
 
     public void setY(int yPos) {
-        this.yPos = yPos;
+        this.y = yPos;
     }
 
-    public int getWidth() {
-        return width;
-    }
 
-    public void setWidth(int width) {
-
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void paintSquare(Graphics g) {
-        g.setColor(this.color);
-        g.fillRect(xPos, yPos, width, height);
-        g.setColor(Color.BLACK);
-        g.drawRect(xPos, yPos, width, height);
+    public void paintSquare(Graphics graphics) {
+        graphics.setColor(this.color);
+        graphics.fillRect(x, y, width, height);
+        graphics.setColor(this.borderColor);
+        graphics.drawRect(x, y, width, height);
     }
 }

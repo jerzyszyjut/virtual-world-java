@@ -14,7 +14,7 @@ class MyPanel extends JPanel implements ActionListener {
     protected JComboBox<String> chooseSpecies;
     protected JLabel cooldownInfo;
     World world;
-    Graphics g;
+    Graphics graphics;
 
     public MyPanel(World world) {
         this.world = world;
@@ -103,7 +103,10 @@ class MyPanel extends JPanel implements ActionListener {
             world.loadWorldStateFromFile("save.txt");
             performRedraw();
         } else if ("next".equals(e.getActionCommand())) {
-            ((Human)world.getPlayer()).performSpecialAbility();
+            if(world.getPlayer() != null)
+            {
+                world.getPlayer().performSpecialAbility();
+            }
             world.nextTurn();
             performRedraw();
         } else if ("chooseSpecies".equals(e.getActionCommand())) {
@@ -112,42 +115,52 @@ class MyPanel extends JPanel implements ActionListener {
     }
 
     private void performRedraw() {
-        for (Organism organism : world.getOrganismsList()) {
-            Square square = new Square();
-            square.setColor(organism.getColor());
-            square.setX(organism.getCoordinates().getX() * Config.FIELD_SIZE);
-            square.setY(organism.getCoordinates().getY() * Config.FIELD_SIZE);
-            repaint();
-            renderLogs();
-            renderCooldownInfo();
-        }
+        renderGrid();
+        renderLogs();
+        renderCooldownInfo();
+        repaint();
     }
 
     private void renderLogs() {
+        System.out.println("======= Turn: " + world.getTurn() + " =======");
         for (String log : world.getLogs()) {
             System.out.println(log);
         }
+        this.world.clearLogs();
     }
 
     private void renderCooldownInfo() {
         cooldownInfo.setText(getCooldownInfo());
     }
 
+    private void renderGrid()
+    {
+        graphics.setColor(Color.BLACK);
+        for(int i = 0; i <= world.getWidth(); i++) {
+            graphics.drawLine(i * Config.FIELD_SIZE, 0, i * Config.FIELD_SIZE, world.getHeight() * Config.FIELD_SIZE);
+        }
+        for(int i = 0; i <= world.getHeight(); i++) {
+            graphics.drawLine(0, i * Config.FIELD_SIZE, world.getWidth() * Config.FIELD_SIZE, i * Config.FIELD_SIZE);
+        }
+    }
+
     public Dimension getPreferredSize() {
         return new Dimension(800, 600);
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
 
-        this.g = g;
+        this.graphics = graphics;
 
+        renderGrid();
         for (Organism organism : world.getOrganismsList()) {
-            Square square = new Square();
-            square.setColor(organism.getColor());
-            square.setX(organism.getCoordinates().getX() * Config.FIELD_SIZE);
-            square.setY(organism.getCoordinates().getY() * Config.FIELD_SIZE);
-            square.paintSquare(g);
+            Color borderColor = organism instanceof Animal ? Color.BLACK : Color.WHITE;
+            Square square = new Square(organism.getCoordinates().getX() * Config.FIELD_SIZE,
+                    organism.getCoordinates().getY() * Config.FIELD_SIZE,
+                    organism.getColor(),
+                    borderColor);
+            square.paintSquare(graphics);
         }
     }
 
@@ -190,7 +203,7 @@ class MyPanel extends JPanel implements ActionListener {
     }
 
     private String getCooldownInfo() {
-        Human player = (Human)world.getPlayer();
+        Human player = world.getPlayer();
         if(player == null)
         {
             return "";

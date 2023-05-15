@@ -17,7 +17,7 @@ public class World {
     private int turn;
     private int width;
     private int height;
-    private Organism player;
+    private Human player;
 
     public World(int width, int height) {
         this.turn = 0;
@@ -56,10 +56,13 @@ public class World {
 
         if(player != null && player.isAlive())
         {
-            ((Human)player).decrementSpecialAbilityCooldown();
+            player.performSpecialAbility();
+            player.decrementSpecialAbilityCooldown();
         }
 
         removeDeadOrganisms();
+
+        this.turn++;
     }
 
     public void addOrganism(Organism organism) {
@@ -109,6 +112,11 @@ public class World {
         if (!this.isInWorld(coordinates))
             return;
         Coordinates oldCoordinates = organism.getCoordinates();
+        Organism previousOrganism = this.organisms[coordinates.getX()][coordinates.getY()];
+        if(previousOrganism != null && previousOrganism.getSpecies() == Species.HUMAN)
+        {
+            this.player = null;
+        }
         this.organisms[oldCoordinates.getX()][oldCoordinates.getY()] = null;
         this.organisms[coordinates.getX()][coordinates.getY()] = organism;
         organism.setCoordinates(coordinates);
@@ -203,11 +211,11 @@ public class World {
         return organisms;
     }
 
-    public Organism getPlayer() {
+    public Human getPlayer() {
         return player;
     }
 
-    public void setPlayer(Organism player) {
+    public void setPlayer(Human player) {
         this.player = player;
     }
 

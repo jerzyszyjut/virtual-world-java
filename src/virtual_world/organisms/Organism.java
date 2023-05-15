@@ -46,12 +46,21 @@ abstract public class Organism {
         if (!isAttacked) {
             CollisionResult collisionResult = secondOrganism.collision(this, true);
             if (isStrongerThan(secondOrganism) && collisionResult == CollisionResult.TIE) {
+                this.world.addLog(this.getSpecies() + " tied a fight with " + secondOrganism.getSpecies() + " at " + this.getCoordinates().toString());
                 return CollisionResult.TIE;
             }
         }
         if (this.isStrongerThan(secondOrganism, isAttacked)) {
+            if(!isAttacked)
+            {
+                this.world.addLog(this.getSpecies() + " defeated " + secondOrganism.getSpecies() + " at " + this.getCoordinates().toString());
+            }
             return CollisionResult.VICTORY;
         } else {
+            if(!isAttacked)
+            {
+                this.world.addLog(this.getSpecies() + " was defeated by " + secondOrganism.getSpecies() + " at " + this.getCoordinates().toString());
+            }
             return CollisionResult.DEFEAT;
         }
     }
